@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<!-- Load c3.css -->
+<link href="http://chesapeakecommons.org/gists/bwb/stationchart/c3/c3.min.css" rel="stylesheet" type="text/css">
+
+<!-- Load d3.js and c3.js -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://chesapeakecommons.org/gists/bwb/stationchart/c3/c3.min.js"></script>
+
+<div id="chart">
+
+<script>
+
+var chart = c3.generate({
+    data: {
+        x: 'x',
+        columns: [
+            ['x', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
+            ['National Fish and Wildlife Foundation', 371002, 905159, 95000, 1229941, 775000, 700000, 959427, 983858, 662211],
+            ['Agua Fund', 562500, 670500, 762500, 523500, 465000, 453000, 431500, 450000, 545000],
+            ['Keith Campbell Foundation', 15000, 32500, 40000, 45000, 45000, 15000, 141500, 212000, 155000]
+            
+        ],
+        type: 'bar',
+
+        
+        groups: [
+            ['National Fish and Wildlife Foundation', 'Agua Fund']
+        ],
+
+
+    },
+    axis: {
+        y : {
+            tick: {
+                format: d3.format("$,")
+//                format: function (d) { return "$" + d; }
+            }
+        }
+
+
+    }
+});
+
+
+setTimeout(function () {
+    chart.groups([['National Fish and Wildlife Foundation', 'Agua Fund', 'Keith Campbell Foundation']])
+}, 1000);
+
+setTimeout(function () {
+    chart.load({
+        columns: [['Oak Hill Fund', 79000, 121975, 69500, 65000, 85000, 153000, 85000, 48000, 60000]]
+    });
+}, 1500);
+
+setTimeout(function () {
+    chart.groups([['National Fish and Wildlife Foundation', 'Agua Fund', 'Keith Campbell Foundation', 'Oak Hill Fund']])
+}, 2000);
+
+setTimeout(function () {
+    chart.load({
+        columns: [['Hillsdale Fund', 2000, 50000, 55000, 65000, 25000, 50000, 20000, 25000, 15000]]
+    });
+}, 2500);
+
+setTimeout(function () {
+    chart.groups([['National Fish and Wildlife Foundation', 'Agua Fund', 'Keith Campbell Foundation', 'Oak Hill Fund', 'Hillsdale Fund']])
+}, 3000);
+
+setTimeout(function () {
+    chart.load({
+        columns: [['Virginia Environmental Endowment', 51588, 117588, 58700, 22000, 27000, 27000, 3000, 0, 54200]]
+    });
+}, 3500);
+
+setTimeout(function () {
+    chart.load({
+        columns: [['CBI/Chesapeake Bay Trust', 0, 27000, 40000, 40000, 1500, 0, 75000, 78000, 78000]]
+    });
+}, 3500);
+
+setTimeout(function () {
+    chart.groups([['National Fish and Wildlife Foundation', 'Agua Fund', 'Keith Campbell Foundation', 'Oak Hill Fund', 'Hillsdale Fund', 'Virginia Environmental Endowment', 'CBI/Chesapeake Bay Trust']])
+}, 4000);
+
+
+
+
+
+</script>
+
+</div>

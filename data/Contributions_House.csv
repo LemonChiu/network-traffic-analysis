@@ -1,0 +1,277 @@
+CMTE_ID,FILE_NUM,TRANSACTION_TP,Month,Day,Year,TRANSACTION_AMT,STATE,ENTITY_TYPE,CAND_ID,CAND_NAME,OFFICE,PTY
+63,,,,,2006,211699,VA,,1497,Virginia Polytechnic Institute and State University,H,DEM
+46,,,,,2006,131875,VA,,1545,Shenandoah Valley Network,H,DEM
+46,,,,,2006,95625,VA,,1308,Piedmont Environmental Council,H,REP
+63,,,,,2006,69865,VA,,1553,Virginia Poultry Federation,H,DEM
+46,,,,,2006,55000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,REP
+58,,,,,2006,55000,VA,,1485,Valley Conservation Council,H,REP
+46,,,,,2006,50000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2006,45000,VA,,1317,Potomac Riverkeeper,H,DEM
+46,,,,,2006,40000,VA,,1316,Potomac Conservancy,H,REP
+46,,,,,2006,40000,VA,,1485,Valley Conservation Council,H,REP
+46,,,,,2006,37500,VA,,1381,Southern Environmental Law Center,H,REP
+63,,,,,2006,34255,VA,,1554,Virginia State Dairymen's Association,H,REP
+46,,,,,2006,32500,VA,,1523,Wild Virginia,H,DEM
+63,,,,,2006,27605,VA,,1368,Shenandoah Resource Conservation and Development Council,H,REP
+63,,,,,2006,27578,VA,,894,Chesapeake Bay Foundation,H,REP
+46,,,,,2006,17000,VA,,898,Chesapeake Bay Funders Network,H,REP
+54,,,,,2006,15000,VA,,1317,Potomac Riverkeeper,H,REP
+58,,,,,2006,14000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2006,10000,VA,,948,Community Alliance for Preservation,H,DEM
+58,,,,,2006,10000,VA,,1316,Potomac Conservancy,H,REP
+46,,,,,2006,8000,VA,,1540,Center for Agricultural Partnerships,H,REP
+53,,,,,2006,2000,VA,,948,Community Alliance for Preservation,H,REP
+61,,,,,2006,24200,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+61,,,,,2006,3388,VA,,1557,Fairfield Elementary School,H,DEM
+61,,,,,2006,24000,VA,,1485,Valley Conservation Council,H,REP
+63,,,,,2007,317259,VA,,1497,Virginia Polytechnic Institute and State University,H,DEM
+63,,,,,2007,307500,VA,,1020,Environmental Defense Fund,H,REP
+63,,,,,2007,280400,VA,,1497,Virginia Polytechnic Institute and State University,H,DEM
+46,,,,,2007,119375,VA,,1545,Shenandoah Valley Network,H,REP
+46,,,,,2007,85625,VA,,1308,Piedmont Environmental Council,H,DEM
+46,,,,,2007,85000,VA,,1544,Whitehouse Farm Foundation,H,DEM
+46,,,,,2007,55000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,REP
+46,,,,,2007,50000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+46,,,,,2007,45000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2007,45000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+58,,,,,2007,40000,VA,,1317,Potomac Riverkeeper,H,REP
+58,,,,,2007,40000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2007,37500,VA,,1381,Southern Environmental Law Center,H,REP
+46,,,,,2007,35000,VA,,1316,Potomac Conservancy,H,DEM
+46,,,,,2007,35000,VA,,1485,Valley Conservation Council,H,REP
+46,,,,,2007,35000,VA,,1523,Wild Virginia,H,REP
+58,,,,,2007,26975,VA,,1063,Friends of the North Fork of the Shenandoah River,H,DEM
+54,,,,,2007,17500,VA,,1545,Shenandoah Valley Network,H,DEM
+54,,,,,2007,15000,VA,,1317,Potomac Riverkeeper,H,REP
+58,,,,,2007,15000,VA,,908,Chesapeake Wildlife Heritage,H,DEM
+46,,,,,2007,12500,VA,,948,Community Alliance for Preservation,H,REP
+46,,,,,2007,12500,VA,,1547,Frederick County Landmarks Foundation,H,DEM
+46,,,,,2007,12500,VA,,1546,Shenandoah Community Foundation,H,REP
+46,,,,,2007,5500,VA,,1543,Virginia Outdoors Foundation,H,REP
+53,,,,,2007,50000,VA,,948,Community Alliance for Preservation,H,REP
+61,,,,,2007,1200,VA,,1486,Valley Elementary School,H,REP
+61,,,,,2007,26975,VA,,1063,Friends of the North Fork of the Shenandoah River,H,DEM
+61,,,,,2007,39413,VA,,1497,Virginia Polytechnic Institute and State University,H,DEM
+61,,,,,2007,50000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+1,,,,,2007,15000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+1,,,,,2007,12000,VA,,1317,Potomac Riverkeeper,H,DEM
+46,,,,,2008,124375,VA,,1545,Shenandoah Valley Network,H,DEM
+46,,,,,2008,120625,VA,,1308,Piedmont Environmental Council,H,REP
+46,,,,,2008,75000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+46,,,,,2008,70000,VA,,1317,Potomac Riverkeeper,H,DEM
+63,,,,,2008,65000,VA,,1485,Valley Conservation Council,H,DEM
+46,,,,,2008,45000,VA,,1316,Potomac Conservancy,H,REP
+46,,,,,2008,40000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2008,40000,VA,,1504,Water Stewardship,H,DEM
+58,,,,,2008,40000,VA,,1504,Water Stewardship,H,REP
+46,,,,,2008,37500,VA,,1523,Wild Virginia,H,REP
+46,,,,,2008,35000,VA,,1381,Southern Environmental Law Center,H,DEM
+46,,,,,2008,35000,VA,,1485,Valley Conservation Council,H,DEM
+63,,,,,2008,30000,VA,,1497,Virginia Polytechnic Institute and State University,H,DEM
+46,,,,,2008,28800,VA,,1541,Friends of the Shenandoah River,H,REP
+58,,,,,2008,25000,VA,,1316,Potomac Conservancy,H,REP
+54,,,,,2008,20000,VA,,1545,Shenandoah Valley Network,H,REP
+54,,,,,2008,20000,VA,,1317,Potomac Riverkeeper,H,DEM
+46,,,,,2008,16200,VA,,1340,River Network,H,DEM
+46,,,,,2008,15000,VA,,948,Community Alliance for Preservation,H,REP
+46,,,,,2008,15000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,DEM
+46,,,,,2008,15000,VA,,1547,Frederick County Landmarks Foundation,H,REP
+46,,,,,2008,15000,VA,,1366,Shenandoah Forum,H,REP
+46,,,,,2008,15000,VA,,1544,Whitehouse Farm Foundation,H,REP
+46,,,,,2008,10000,VA,,1548,Page County,H,REP
+46,,,,,2008,10000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,REP
+58,,,,,2008,4500,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+53,,,,,2008,10000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+53,,,,,2008,40000,VA,,1545,Shenandoah Valley Network,H,DEM
+53,,,,,2008,5000,VA,,1485,Valley Conservation Council,H,REP
+61,,,,,2008,10000,VA,,1542,Mary Baldwin College,H,REP
+61,,,,,2008,25000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+61,,,,,2008,23700,VA,,1368,Shenandoah Resource Conservation and Development Council,H,REP
+1,,,,,2008,20000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+1,,,,,2008,20000,VA,,1317,Potomac Riverkeeper,H,REP
+63,,,,,2009,869941,VA,,1555,Virginia Department of Conservation and Recreation,H,REP
+63,,,,,2009,310000,MD,,1504,Water Stewardship,H,REP
+46,,,,,2009,109375,VA,,1545,Shenandoah Valley Network,H,REP
+46,,,,,2009,63125,VA,,1308,Piedmont Environmental Council,H,REP
+53,,,,,2009,60000,VA,,949,Community Foundation of Harrisonburg and Rockingham County,H,DEM
+46,,,,,2009,50000,VA,,898,Chesapeake Bay Funders Network,H,REP
+46,,,,,2009,50000,VA,,1317,Potomac Riverkeeper,H,REP
+58,,,,,2009,40000,VA,,1504,Water Stewardship,H,REP
+63,,,,,2009,30000,WV,,1556,Jefferson County Departments of Planning and Zoning,H,DEM
+46,,,,,2009,30000,VA,,1316,Potomac Conservancy,H,DEM
+46,,,,,2009,30000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+46,,,,,2009,25000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2009,25000,VA,,1381,Southern Environmental Law Center,H,REP
+46,,,,,2009,25000,VA,,1485,Valley Conservation Council,H,DEM
+54,,,,,2009,25000,VA,,1545,Shenandoah Valley Network,H,REP
+58,,,,,2009,25000,VA,,1316,Potomac Conservancy,H,DEM
+46,,,,,2009,22500,VA,,1523,Wild Virginia,H,REP
+63,,,,,2009,20000,VA,,1282,Northern Shenandoah Valley Regional Commission,H,REP
+54,,,,,2009,20000,VA,,1317,Potomac Riverkeeper,H,DEM
+46,,,,,2009,15000,VA,,1340,River Network,H,REP
+46,,,,,2009,12500,VA,,948,Community Alliance for Preservation,H,DEM
+46,,,,,2009,12500,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+46,,,,,2009,12500,VA,,1547,Frederick County Landmarks Foundation,H,REP
+46,,,,,2009,12500,VA,,1366,Shenandoah Forum,H,DEM
+46,,,,,2009,12500,VA,,1544,Whitehouse Farm Foundation,H,DEM
+46,,,,,2009,8000,VA,,1282,Northern Shenandoah Valley Regional Commission,H,DEM
+46,,,,,2009,8000,VA,,1548,Page County,H,REP
+53,,,,,2009,5000,VA,,1545,Shenandoah Valley Network,H,REP
+61,,,,,2009,3000,VA,,1558,Virginia Hot Springs Preservation Trust,H,REP
+61,,,,,2009,10000,VA,,1559,Appalachian Trail Conservancy,H,REP
+61,,,,,2009,7000,VA,,1560,Shenandoah University,H,REP
+61,,,,,2009,2000,VA,,1561,Upper Roanoke River Roundtable,H,REP
+1,,,,,2009,20000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+1,,,,,2009,20000,VA,,1317,Potomac Riverkeeper,H,REP
+63,,,,,2010,700000,VA,,1497,Virginia Polytechnic Institute and State University,H,REP
+46,,,,,2010,99375,VA,,1545,Shenandoah Valley Network,H,REP
+46,,,,,2010,75625,VA,,1308,Piedmont Environmental Council,H,REP
+63,,,,,2010,75000,VA,,1542,Mary Baldwin College,H,REP
+46,,,,,2010,55000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+46,,,,,2010,50000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2010,35000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+58,,,,,2010,35000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2010,25000,VA,,1316,Potomac Conservancy,H,DEM
+46,,,,,2010,25000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2010,25000,VA,,1381,Southern Environmental Law Center,H,REP
+54,,,,,2010,25000,VA,,1317,Potomac Riverkeeper,H,REP
+58,,,,,2010,25000,VA,,1464,Trout Unlimited,H,DEM
+58,,,,,2010,25000,VA,,1523,Wild Virginia,H,DEM
+53,,,,,2010,20000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2010,20000,VA,,1485,Valley Conservation Council,H,DEM
+46,,,,,2010,20000,VA,,1523,Wild Virginia,H,REP
+54,,,,,2010,20000,VA,,1545,Shenandoah Valley Network,H,DEM
+46,,,,,2010,15000,VA,,1340,River Network,H,REP
+46,,,,,2010,10000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+46,,,,,2010,10000,VA,,1366,Shenandoah Forum,H,REP
+53,,,,,2010,5000,VA,,1545,Shenandoah Valley Network,H,REP
+61,,,,,2010,15000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+61,,,,,2010,12000,VA,,1485,Valley Conservation Council,H,REP
+1,,,,,2010,750,VA,,1063,Friends of the North Fork of the Shenandoah River,H,DEM
+1,,,,,2010,750,VA,,1317,Potomac Riverkeeper,H,REP
+63,,,,,2011,600000,VA,,1497,Virginia Polytechnic Institute and State University,H,REP
+46,,,,,2011,101125,VA,,1308,Piedmont Environmental Council,H,REP
+63,,,,,2011,100000,VA,,1552,"City of Waynesboro, Virginia",H,DEM
+46,,,,,2011,89375,VA,,1545,Shenandoah Valley Network,H,REP
+46,,,,,2011,65000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+53,,,,,2011,50000,VA,,1545,Shenandoah Valley Network,H,REP
+58,,,,,2011,35000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2011,32500,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+58,,,,,2011,30000,VA,,1316,Potomac Conservancy,H,REP
+58,,,,,2011,30000,VA,,1464,Trout Unlimited,H,REP
+46,,,,,2011,25000,VA,,1317,Potomac Riverkeeper,H,DEM
+46,,,,,2011,25000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2011,25000,VA,,1381,Southern Environmental Law Center,H,REP
+58,,,,,2011,25000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+46,,,,,2011,20000,VA,,1316,Potomac Conservancy,H,DEM
+58,,,,,2011,18000,VA,,904,Chesapeake Media Service,H,REP
+46,,,,,2011,15000,VA,,1485,Valley Conservation Council,H,DEM
+46,,,,,2011,15000,VA,,1523,Wild Virginia,H,DEM
+54,,,,,2011,15000,VA,,1308,Piedmont Environmental Council,H,REP
+58,,,,,2011,15000,VA,,908,Chesapeake Wildlife Heritage,H,REP
+46,,,,,2011,10000,VA,,948,Community Alliance for Preservation,H,REP
+46,,,,,2011,10000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,DEM
+46,,,,,2011,10000,VA,,1340,River Network,H,DEM
+46,,,,,2011,10000,VA,,1366,Shenandoah Forum,H,REP
+61,,,,,2011,15000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+61,,,,,2011,12000,VA,,1485,Valley Conservation Council,H,REP
+63,,,,,2012,398740,VA,,894,Chesapeake Bay Foundation,H,REP
+63,,,,,2012,219084,VA,,1497,Virginia Polytechnic Institute and State University,H,DEM
+63,,,,,2012,200000,MD,,1316,Potomac Conservancy,H,REP
+63,,,,,2012,141602.95,VA,,1551,Clarke County,H,REP
+46,,,,,2012,100125,VA,,1308,Piedmont Environmental Council,H,REP
+46,,,,,2012,79375,VA,,1545,Shenandoah Valley Network,H,DEM
+46,,,,,2012,75000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+54,,,,,2012,45000,VA,,1317,Potomac Riverkeeper,H,REP
+58,,,,,2012,35000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2012,30000,VA,,1317,Potomac Riverkeeper,H,DEM
+54,,,,,2012,30000,VA,,1308,Piedmont Environmental Council,H,REP
+58,,,,,2012,30000,VA,,1316,Potomac Conservancy,H,DEM
+54,,,,,2012,25000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2012,22500,VA,,1381,Southern Environmental Law Center,H,REP
+46,,,,,2012,22500,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+54,,,,,2012,20000,VA,,1308,Piedmont Environmental Council,H,DEM
+54,,,,,2012,20000,VA,,1308,Piedmont Environmental Council,H,DEM
+58,,,,,2012,20000,VA,,1103,"H. John Heinz III Center for Science, Economics and the Environment",H,REP
+46,,,,,2012,15000,VA,,1316,Potomac Conservancy,H,REP
+53,,,,,2012,10000,VA,,1366,Shenandoah Forum,H,DEM
+53,,,,,2012,10000,VA,,1545,Shenandoah Valley Network,H,REP
+46,,,,,2012,10000,VA,,948,Community Alliance for Preservation,H,REP
+46,,,,,2012,10000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+46,,,,,2012,10000,VA,,1366,Shenandoah Forum,H,REP
+46,,,,,2012,10000,VA,,1485,Valley Conservation Council,H,REP
+46,,,,,2012,10000,VA,,1497,Virginia Polytechnic Institute and State University,H,DEM
+46,,,,,2012,10000,VA,,1504,Water Stewardship,H,REP
+46,,,,,2012,10000,VA,,1523,Wild Virginia,H,DEM
+46,,,,,2012,7500,VA,,1340,River Network,H,REP
+46,,,,,2012,5000,VA,,1067,Friends of the Rivers of Virginia,H,REP
+46,,,,,2012,4500,VA,,1282,Northern Shenandoah Valley Regional Commission,H,DEM
+54,,,,,2012,1500,VA,,1308,Piedmont Environmental Council,H,REP
+61,,,,,2012,3000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+1,,,,,2012,50000,VA,,1317,Potomac Riverkeeper,H,REP
+1,,,,,2012,25000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+63,,,,,2013,367434.66,MD,,1316,Potomac Conservancy,H,DEM
+63,,,,,2013,247354,VA,,1497,Virginia Polytechnic Institute and State University,H,REP
+63,,,,,2013,199069.79,VA,,1464,Trout Unlimited,H,REP
+63,,,,,2013,170000,VA,,1485,Valley Conservation Council,H,DEM
+46,,,,,2013,85625,VA,,1308,Piedmont Environmental Council,H,DEM
+46,,,,,2013,79375,VA,,1545,Shenandoah Valley Network,H,REP
+46,,,,,2013,75000,VA,,898,Chesapeake Bay Funders Network,H,REP
+46,,,,,2013,60000,VA,,1317,Potomac Riverkeeper,H,REP
+54,,,,,2013,40000,VA,,1317,Potomac Riverkeeper,H,DEM
+54,,,,,2013,40000,VA,,1317,Potomac Riverkeeper,H,DEM
+54,,,,,2013,32000,VA,,1317,Potomac Riverkeeper,H,REP
+54,,,,,2013,30000,VA,,1308,Piedmont Environmental Council,H,DEM
+54,,,,,2013,30000,VA,,1317,Potomac Riverkeeper,H,REP
+58,,,,,2013,30000,VA,,904,Chesapeake Media Service,H,REP
+53,,,,,2013,25000,VA,,1167,Keystone Research Center,H,REP
+46,,,,,2013,25000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2013,22500,VA,,1381,Southern Environmental Law Center,H,REP
+54,,,,,2013,20000,VA,,1308,Piedmont Environmental Council,H,REP
+54,,,,,2013,20000,VA,,1308,Piedmont Environmental Council,H,DEM
+58,,,,,2013,18000,VA,,1485,Valley Conservation Council,H,DEM
+46,,,,,2013,15000,VA,,1316,Potomac Conservancy,H,REP
+46,,,,,2013,15000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+46,,,,,2013,10000,VA,,948,Community Alliance for Preservation,H,REP
+46,,,,,2013,10000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,DEM
+46,,,,,2013,10000,VA,,1366,Shenandoah Forum,H,REP
+46,,,,,2013,10000,VA,,1497,Virginia Polytechnic Institute and State University,H,REP
+46,,,,,2013,10000,VA,,1504,Water Stewardship,H,DEM
+46,,,,,2013,10000,VA,,1523,Wild Virginia,H,REP
+46,,,,,2013,7500,VA,,1340,River Network,H,DEM
+46,,,,,2013,5000,VA,,1485,Valley Conservation Council,H,REP
+1,,,,,2013,50000,VA,,1317,Potomac Riverkeeper,H,DEM
+1,,,,,2013,28000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+63,,,,,2014,210652,VA,,1497,Virginia Polytechnic Institute and State University,H,REP
+63,,,,,2014,200000,VA,,1549,James Madison University,H,DEM
+63,,,,,2014,200000,VA,,1550,Eastern Mennonite University,H,DEM
+46,,,,,2014,137500,VA,,1308,Piedmont Environmental Council,H,REP
+46,,,,,2014,90000,VA,,1545,Shenandoah Valley Network,H,DEM
+46,,,,,2014,75000,VA,,898,Chesapeake Bay Funders Network,H,DEM
+58,,,,,2014,60000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2014,53000,VA,,1381,Southern Environmental Law Center,H,REP
+63,,,,,2014,51559.32,WV,,856,Cacapon Institute,H,REP
+54,,,,,2014,45000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2014,40000,VA,,1497,Virginia Polytechnic Institute and State University,H,REP
+46,,,,,2014,32000,VA,,1369,Shenandoah Valley Battlefields Foundation,H,REP
+46,,,,,2014,30000,VA,,1317,Potomac Riverkeeper,H,DEM
+54,,,,,2014,30000,VA,,1308,Piedmont Environmental Council,H,REP
+54,,,,,2014,30000,VA,,1308,Piedmont Environmental Council,H,REP
+54,,,,,2014,20000,VA,,1308,Piedmont Environmental Council,H,DEM
+54,,,,,2014,20000,VA,,1308,Piedmont Environmental Council,H,REP
+53,,,,,2014,15000,VA,,1545,Shenandoah Valley Network,H,REP
+46,,,,,2014,15000,VA,,1368,Shenandoah Resource Conservation and Development Council,H,DEM
+46,,,,,2014,10000,VA,,948,Community Alliance for Preservation,H,REP
+46,,,,,2014,10000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,REP
+46,,,,,2014,10000,VA,,1316,Potomac Conservancy,H,REP
+46,,,,,2014,10000,VA,,1366,Shenandoah Forum,H,REP
+46,,,,,2014,10000,VA,,1504,Water Stewardship,H,DEM
+46,,,,,2014,10000,VA,,1523,Wild Virginia,H,REP
+54,,,,,2014,10000,VA,,1317,Potomac Riverkeeper,H,REP
+46,,,,,2014,7500,VA,,1340,River Network,H,REP
+46,,,,,2014,5000,VA,,1485,Valley Conservation Council,H,DEM
+61,,,,,2014,24200,VA,,1562,Central Shenandoah Planning District Commission,H,REP
+61,,,,,2014,15000,VA,,1316,Potomac Conservancy,H,DEM
+61,,,,,2014,15000,VA,,1563,Virginia Conservation Legacy Fund,H,REP
+1,,,,,2014,28000,VA,,1063,Friends of the North Fork of the Shenandoah River,H,DEM
+1,,,,,2014,50000,VA,,1317,Potomac Riverkeeper,H,REP
