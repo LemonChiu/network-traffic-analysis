@@ -7,7 +7,7 @@ body {
     font-family: "Helvetica Neue", Helvetica;
 }
 
-#bpg {
+#visDiv {
     margin:auto;
 }
 
@@ -15,7 +15,11 @@ body {
     position:relative;
 }
 
-#svgDiv {
+#chordSvgDiv {
+    margin: auto;
+}
+
+#treemapSvgDiv {
     margin: auto;
 }
 
@@ -43,13 +47,10 @@ pre {
     color: #999;
 }
 
-
-
-
 div.tooltip {
-    position: absolute;			/* reference for measurement */
+    position: absolute;
     text-align: left;
-    pointer-events: none;			/* 'none' tells the mouse to ignore the rectangle */
+    pointer-events: none;
     background: #FFFFEF;
     width: 400px;
     height: 165px;
@@ -75,7 +76,6 @@ div.tooltipTail {
     top: 72px;
     width: 7px;
     height: 13px;
-    background: url("images/tail_white.png") 50% 0%;
 }
 
 div.toolTipBody {
@@ -104,7 +104,6 @@ div.header-rule{
 }
 
 div.header1{
-   /* text-transform: uppercase; */
     text-align: left;
     font-size: 13px;
     margin-bottom: 2px;
@@ -126,17 +125,14 @@ div.header3 {
     font-size: 15px;
     font-style: italic;
     font-family: Georgia;
-    /*  width:170px;*/
     text-align:center;
 }
 
 div.header4 {
-    /*  position:absolute;*/
     text-align:center;
     right:10px;
     top:28px;
     font-size: 16px;
-    /*  width:100px;*/
     text-align:center;
     overflow:hidden;
     font-weight:bold;
@@ -196,17 +192,19 @@ div.header4 {
 
 /* Navigation */
 .bpg-navBar {
-    position:absolute;
+    position: absolute;
     padding: 15px 0 0;
     margin: 0 10px;
     z-index: 100;
     position: absolute;
-    left:10px;
-    top:10px;
+    left: 10px;
+    top: 70px;
 }
 
 .bpg-navigation {
-
+    list-style-type: none;
+    width: 300px;
+    height: 20px;
 }
 
 .bpg-navigation li {
@@ -290,4 +288,20 @@ text.secondLabel {
     font-size: 10px;
 }
 
+.line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 1px;
+}
 
+.bar-option {
+    display:none;
+}
+
+#next-graph-btn {
+    display:none;
+}
+
+.x.axis path {
+    display: none;
+}

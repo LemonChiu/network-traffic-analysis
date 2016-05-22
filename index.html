@@ -1,71 +1,56 @@
-
 <!DOCTYPE html>
-
-
 <html>
 <head>
-    <meta HTTP-EQUIV="X-UA-COMPATIBLE" CONTENT="IE=EmulateIE9" >
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta property="og:image" content="http://www.brightpointinc.com/interactive/images/PoliticalInfluence_202px.png">
-    <title>Visualizing Collaborative Funding in the Valley</title>
+    <title>Visualizing Network with Chord</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="reset.css">
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
-
-
-
 
 </head>
 <body>
-
-
-
-<div id="bpg" >
-
-
-    <div id="mainDiv">
-        <div id="svgDiv"></div>
-        <div class="bpg-navBar" style="width:300px; left:0px;">
-            
-
-        </div>
-
-        <div id="headerRight" style="width:350px; right:20px;">
-            <div class="hint" style="font-size:26px; color:#000;">
-                Funding in the Shenadoah
+    <div id="visDiv" >
+        <div id="mainDiv">
+            <div id="chordSvgDiv"></div>
+            <div class="bpg-navBar">
+                <ul class="bpg-navigation clearfix">
+                    <li id="houseButton" class="selected">Access Count</li>
+                    <li id="senateButton">Flow Size</li>
+                </ul>
             </div>
-            <div class="hint">
-                <div id="totalDiv" style="color: #000; font-size:22px; font-weight:bold; margin-top:5px; font-family: Georgia; font-style:italic">
-                    $0
-                </div>
-                <div style="color: #000; font-size:14px; margin-top:5px; margin-bottom:10px; font-style:italic">
-                    9 Years of Foundation Support and Collaboration (2006 - 2014).
-                </div>
-
-                <div style="color:#777; font-style:normal;">
-                    Design and Engineering: <a href="http://chesapeakecommons.org" title="Chesapeake Commons">www.chesapeakecommons.org</a>
-                </div>
-                <div style="margin-top:20px;">
-                    <!-- <image src="images/legend.png"></image> -->
+            <div class="treemap-bar">
+                <label for="show-treemap-btn"><b>Display Treemap</b> (Servers) </label>
+                <input id="show-treemap-btn" type="button" value=" Show " onclick="buildTreemap()" />
+                <input id="hide-treemap-btn" type="button" value=" Hide " onclick="hideTreemap()" />
+                <label class="bar-option"><input class="bar-option" type="radio" name="mode" value="size" checked /> Flow Size</label>
+                <label class="bar-option"><input class="bar-option" type="radio" name="mode" value="count" /> Visit Count</label>
+            </div>
+            <div id="treemapSvgDiv"></div>
+            <div class="timeline-bar">
+                <label for="show-timeline-btn"><b>Display Timeline</b> (Network flows) </label>
+                <input id="show-timeline-btn" type="button" value=" Show " onclick="buildTimeline()" />
+                <input id="hide-timeline-btn" type="button" value=" Hide " onclick="hideTimeline()" />
+                <input id="next-graph-btn" type="button" value=" Next " onclick="nextGraph()" />
+            </div>
+            <div id="timelineSvgDiv"></div>
+            <div class="pies-bar">
+                <label for="show-pies-btn"><b>Display Pies</b> (Mode) </label>
+                <input id="show-pies-btn" type="button" value=" Show " onclick="buildPies()" />
+                <input id="hide-pies-btn" type="button" value=" Hide " onclick="hidePies()" />
+            </div>
+            <div id="piesSvgDiv"></div>
+            <div id="headerRight" style="width:350px; right:20px;">
+                <div class="hint" style="font-size:26px; color:#000;">ChinaVis Data Challenge</div>
+                <div class="hint">
+                    <div id="totalDiv" style="color: #000; font-size:22px; font-weight:bold; margin-top:5px; font-family: Georgia; font-style:italic">
+                        TCP Flow Logs of A Week
+                    </div>
+                    <div style="color: #777; font-size:14px; margin-top:5px; margin-bottom:10px;">
+                        <a href="http://chinavis.tju.edu.cn" title="ChinaVis">chinavis.tju.edu.cn</a>
+                    </div>
                 </div>
             </div>
-
         </div>
-
-            <div style="margin-top:-225px;">                      
-                <center>
-                 <iframe width='100%' height='500px' frameBorder='0' src='http://chesapeakecommons.org/gists/svalley/network/charts/funderchart.html'></iframe>
-                </center>
-
-            </div>
-
-        </div>
-
     </div>
-
-    <div id="toolTip" class="tooltip" style="width:250px; height:120px; position:absolute;s">
+    <div id="toolTip" class="tooltip" style="width:250px; height:120px; position:absolute;">
         <div id="header1" class="header2"></div>
         <div class="header-rule"></div>
         <div id="head" class="header"></div>
@@ -73,26 +58,16 @@
         <div  id="header2" class="header3"></div>
         <div  class="tooltipTail"></div>
     </div>
-
-
-
-
-
-
-
-
-<script type="text/javascript" src="scripts/app/globals.js"></script>
-<script type="text/javascript" src="scripts/app/initialize.js"></script>
-<script type="text/javascript" src="scripts/app/events.js"></script>
-<script type="text/javascript" src="scripts/app/data.js"></script>
-<script type="text/javascript" src="scripts/app/chords.js"></script>
-<script type="text/javascript" src="scripts/app/update.js"></script>
-<script type="text/javascript" src="scripts/app/main.js"></script>
-
-
-
-            
-
-
+    <script type="text/javascript" src="scripts/d3/d3.min.js"></script>
+    <script type="text/javascript" src="scripts/app/globals.js"></script>
+    <script type="text/javascript" src="scripts/app/initialize.js"></script>
+    <script type="text/javascript" src="scripts/app/events.js"></script>
+    <script type="text/javascript" src="scripts/app/data.js"></script>
+    <script type="text/javascript" src="scripts/app/chords.js"></script>
+    <script type="text/javascript" src="scripts/app/update.js"></script>
+    <script type="text/javascript" src="scripts/app/treemap.js"></script>
+    <script type="text/javascript" src="scripts/app/timeline.js"></script>
+    <script type="text/javascript" src="scripts/app/pies.js"></script>
+    <script type="text/javascript" src="scripts/app/main.js"></script>
 </body>
 </html>
