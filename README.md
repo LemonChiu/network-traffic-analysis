@@ -4,3 +4,4 @@ Visualization of abnormal flow analysis. The project for 2015 ChinaVis Data Chal
 
 ###[Online Demo](http://lemonchiu.github.io/network-traffic-analysis/)
 
+<img src="https://raw.githubusercontent.com/LemonChiu/network-traffic-analysis/master/screenshot/poster.png" align="left" width="800">
