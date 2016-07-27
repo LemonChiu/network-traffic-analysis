@@ -1,7 +1,10 @@
 # Visualization of abnormal flow analysis
 
-Visualization of abnormal flow analysis. The project for 2015 ChinaVis Data Challenge. The chord diagram code was adapted from the Political Influence Visualization created by BrightPoint Consulting, Inc. 
+A network communication visual analytic system. The project for 2015 ChinaVis Data Challenge. The chord diagram code was adapted from the Political Influence Visualization created by BrightPoint Consulting, Inc.
 
 ###[Online Demo](http://lemonchiu.github.io/network-traffic-analysis/)
 
 <img src="https://raw.githubusercontent.com/LemonChiu/network-traffic-analysis/master/screenshot/poster.png" align="left" width="800">
+
+### License
+Licensed under The [MIT](https://github.com/LemonChiu/network-traffic-analysis/blob/master/LICENSE) License
