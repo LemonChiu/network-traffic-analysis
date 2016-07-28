@@ -2,20 +2,19 @@
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>Visualizing Network with Chord</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
-
+    <title>2015 ChinaVis Data Challenge</title>
+    <link type="text/css" rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="visDiv" >
-        <div id="mainDiv">
-            <div id="chordSvgDiv"></div>
-            <div class="bpg-navBar">
-                <ul class="bpg-navigation clearfix">
+    <div id="main-div" >
+        <div id="vis-div">
+            <div class="chord-bar">
+                <ul class="chord-navigation">
                     <li id="houseButton" class="selected">Access Count</li>
                     <li id="senateButton">Flow Size</li>
                 </ul>
             </div>
+            <div id="chord-svg-div"></div>
             <div class="treemap-bar">
                 <label for="show-treemap-btn"><b>Display Treemap</b> (Servers) </label>
                 <input id="show-treemap-btn" type="button" value=" Show " onclick="buildTreemap()" />
@@ -37,37 +36,30 @@
                 <input id="hide-pies-btn" type="button" value=" Hide " onclick="hidePies()" />
             </div>
             <div id="piesSvgDiv"></div>
-            <div id="headerRight" style="width:350px; right:20px;">
-                <div class="hint" style="font-size:26px; color:#000;">ChinaVis Data Challenge</div>
-                <div class="hint">
-                    <div id="totalDiv" style="color: #000; font-size:22px; font-weight:bold; margin-top:5px; font-family: Georgia; font-style:italic">
-                        TCP Flow Logs of A Week
-                    </div>
-                    <div style="color: #777; font-size:14px; margin-top:5px; margin-bottom:10px;">
-                        <a href="http://chinavis.tju.edu.cn" title="ChinaVis">chinavis.tju.edu.cn</a>
-                    </div>
-                </div>
+            <div id="header-right">
+                <div id="chinavis-title">ChinaVis Data Challenge</div>
+                <div id="vis-title">TCP flow logs of a week</div>
             </div>
         </div>
     </div>
-    <div id="toolTip" class="tooltip" style="width:250px; height:120px; position:absolute;">
-        <div id="header1" class="header2"></div>
-        <div class="header-rule"></div>
-        <div id="head" class="header"></div>
-        <div class="header-rule"></div>
-        <div  id="header2" class="header3"></div>
-        <div  class="tooltipTail"></div>
+    <div id="tool-tip">
+        <div id="server-header"></div>
+        <div class="tool-tip-split"></div>
+        <div id="ip-header"></div>
+        <div class="tool-tip-split"></div>
+        <div id="total-value"></div>
     </div>
     <script type="text/javascript" src="scripts/d3/d3.min.js"></script>
+    <script type="text/javascript" src="scripts/app/treemap.js"></script>
+    <script type="text/javascript" src="scripts/app/timeline.js"></script>
+    <script type="text/javascript" src="scripts/app/pies.js"></script>
+    <!-- chord -->
     <script type="text/javascript" src="scripts/app/globals.js"></script>
     <script type="text/javascript" src="scripts/app/initialize.js"></script>
     <script type="text/javascript" src="scripts/app/events.js"></script>
     <script type="text/javascript" src="scripts/app/data.js"></script>
     <script type="text/javascript" src="scripts/app/chords.js"></script>
     <script type="text/javascript" src="scripts/app/update.js"></script>
-    <script type="text/javascript" src="scripts/app/treemap.js"></script>
-    <script type="text/javascript" src="scripts/app/timeline.js"></script>
-    <script type="text/javascript" src="scripts/app/pies.js"></script>
     <script type="text/javascript" src="scripts/app/main.js"></script>
 </body>
 </html>

@@ -7,9 +7,9 @@ function node_onMouseOver(d, type) {
             .duration(200)
             .style("opacity", "0.7");
 
-        header1.text("Possible Server");
-        header.text(d.CAND_NAME);
-        header2.text(formatServerTotal(d.OFFICE) + formatCurrency(Number(d.Amount)));
+        serverHeader.text("Possible Server");
+        ipHeader.text(d.CAND_NAME);
+        totalValue.text(formatServerTotal(d.OFFICE) + formatCurrency(Number(d.Amount)));
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","100px");
@@ -23,9 +23,9 @@ function node_onMouseOver(d, type) {
             .duration(200)
             .style("opacity", "0.7");
 
-        header1.text("SIP: " + pacsById[office + "_" + d.CMTE_ID].CMTE_NM);
-        header.text("DIP: " + d.CAND_NAME);
-        header2.text(formatCurrency(Number(d.TRANSACTION_AMT)));
+        serverHeader.text("SIP: " + pacsById[office + "_" + d.CMTE_ID].CMTE_NM);
+        ipHeader.text("DIP: " + d.CAND_NAME);
+        totalValue.text(formatCurrency(Number(d.TRANSACTION_AMT)));
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","100px");
@@ -38,9 +38,9 @@ function node_onMouseOver(d, type) {
             .duration(200)
             .style("opacity", "0.7");
 
-        header1.text("Source IP Address");
-        header.text(pacsById[office + "_" + d.label].CMTE_NM);
-        header2.text("Total: " + formatCurrency(pacsById[office + "_" + d.label].Amount));
+        serverHeader.text("Source IP Address");
+        ipHeader.text(pacsById[office + "_" + d.label].CMTE_NM);
+        totalValue.text("Total: " + formatCurrency(pacsById[office + "_" + d.label].Amount));
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","110px");
@@ -50,12 +50,12 @@ function node_onMouseOver(d, type) {
             .duration(200)
             .style("opacity", "0.7");
         if (contains(serversList, d.name)) {
-            header1.text("SERVER");
+            serverHeader.text("SERVER");
         } else {
-            header1.text("CLIENT");
+            serverHeader.text("CLIENT");
         }
-        header.text(d.name);
-        header2.text("Size: " + formatNumber(d.size) + ". Count: " + formatNumber(d.count) + ". " );
+        ipHeader.text(d.name);
+        totalValue.text("Size: " + formatNumber(d.size) + ". Count: " + formatNumber(d.count) + ". " );
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","110px");
@@ -64,9 +64,9 @@ function node_onMouseOver(d, type) {
         toolTip.transition()
             .duration(200)
             .style("opacity", "0.7");
-        header1.text("Max Flow Size: " + formatNumber(d.maxPrice) + " bytes");
-        header.text(d.key);
-        header2.text("Total Flow Size: " + formatNumber(d.sumPrice) + " bytes");
+        serverHeader.text("Max Flow Size: " + formatNumber(d.maxPrice) + " bytes");
+        ipHeader.text(d.key);
+        totalValue.text("Total Flow Size: " + formatNumber(d.sumPrice) + " bytes");
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","110px");
@@ -74,7 +74,7 @@ function node_onMouseOver(d, type) {
     }
 }
 
-function node_onMouseOut(d,type) {
+function node_onMouseOut(d, type) {
     if (type == "CAND") {
         highlightLinks(d,false);
     }
@@ -86,7 +86,7 @@ function node_onMouseOut(d,type) {
     }
 
     toolTip.transition()
-        .duration(500)    // it shall take 500ms
+        .duration(500)
         .style("opacity", "0");
 }
 

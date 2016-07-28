@@ -29,12 +29,12 @@ function buildChords() {
     pacs.forEach(function(d) {
         d = d.CMTE_ID;
         if (!(d in indexByName)) {
-              nameByIndex[n] = d;
-              indexByName[d] = n++;
+            nameByIndex[n] = d;
+            indexByName[d] = n++;
         }
     });
 
-     pacs.forEach(function(d) {
+    pacs.forEach(function(d) {
         var source = indexByName[d.CMTE_ID],
             row = matrix[source];
         if (!row) {
@@ -86,11 +86,8 @@ function buildChords() {
         for (var i=0; i < chordCount; i++) {
             if (buffer[i].label == name) {
                 return i;
-                //   break;
             }
         }
         return -1;
     }
-
-    //log("buildChords()");
 }

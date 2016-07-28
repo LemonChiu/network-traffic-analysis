@@ -19,7 +19,7 @@ d3.select(document.getElementById("mainDiv"))
 d3.select(document.getElementById("visDiv"))
     .style("width",(outerRadius * 2 + 400) + "px");
 
-var svg = d3.select(document.getElementById("chordSvgDiv"))
+var svg = d3.select(document.getElementById("chord-svg-div"))
     .style("width", (outerRadius * 2 + 200) + "px")
     .style("height", (outerRadius * 2 + 100) + "px")
     .append("svg")
@@ -65,11 +65,10 @@ var diameter = 960,
     format = d3.format(",d"),
     color = d3.scale.category20c();
 
-var toolTip = d3.select(document.getElementById("toolTip"));
-var header = d3.select(document.getElementById("head"));
-var header1 = d3.select(document.getElementById("header1"));
-var header2 = d3.select(document.getElementById("header2"));
-var total = d3.select(document.getElementById("totalDiv"));
+var toolTip = d3.select(document.getElementById("tool-tip"));
+var ipHeader = d3.select(document.getElementById("ip-header"));
+var serverHeader = d3.select(document.getElementById("server-header"));
+var totalValue = d3.select(document.getElementById("total-value"));
 var repColor = "#FF4A4A";
 var demColor = "#25BFF7";
 var otherColor = "#FFEDAB";

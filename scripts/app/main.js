@@ -13,12 +13,6 @@ function main() {
     intervalId = setInterval(onInterval,1);
 }
 
-/*
-function onDataFetched() {
-    main();
-}
-*/
-
 function onInterval() {
     if(contr.length == 0) {
         clearInterval(intervalId);

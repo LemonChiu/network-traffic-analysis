@@ -73,7 +73,6 @@ function initialize() {
             }
         })
 
-        //log("totalCandAmount=" + totalCandAmount);
         pacs = pacsSenate;
         c_senate.forEach(function (d) {
             contr.push(d);
@@ -88,6 +87,4 @@ function initialize() {
         chordsById[d.CMTE_ID].relatedLinks.push(d);
         totalContr += Number(d.TRANSACTION_AMT);
     })
-    //log("totalContributions = " + totalContr);
-    //log("initialize()");
 }

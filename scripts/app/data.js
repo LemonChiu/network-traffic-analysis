@@ -1,8 +1,3 @@
-/**
- * Daisy Chain Data Fetches to ensure all data is loaded prior to updates (async calls)
- */
-
-// var dataDispatch=d3.dispatch("end");
 var dataCalls = [];
 var numCalls = 0;
 

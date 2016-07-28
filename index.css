@@ -1,0 +1,158 @@
+body {
+    font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB";
+    font-size: 12px;
+    text-align: center;
+    font-weight: 300;
+}
+
+#main-div {
+    margin: 0 auto;
+}
+
+#header-right {
+    text-align: right;
+    position: absolute;
+    width: 350px;
+    top: 10px;
+    right: 20px;
+}
+
+#chinavis-title {
+    font-size: 28px;
+    color: #999;
+}
+
+#vis-title {
+    padding-left: 30px;
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* chord */
+#chord-svg-div {
+    margin: 0 auto;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+}
+
+text.chord {
+    font-size: 8px;
+}
+
+/* chord tool tip */
+#tool-tip {
+    position: absolute;
+    pointer-events: none;
+    width: 250px;
+    height: 120px;
+    padding: 10px;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    border: 1px solid rgba(200,200,200,0.85);
+}
+
+#ip-header {
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 2px;
+    color: #666;
+    text-align: center;
+}
+
+#server-header{
+    color: #000;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+#total-value {
+    color: #333;
+    text-align: left;
+    font-size: 15px;
+    font-style: italic;
+    font-family: Georgia;
+    text-align: center;
+}
+
+.tool-tip-split{
+    height: 1px;
+    margin: 1px auto 3px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    background: #ddd;
+    width: 125px;
+}
+
+/* chord navigation bar */
+.chord-bar {
+    position: absolute;
+    padding: 15px 0 0;
+    margin: 0 10px;
+    left: 10px;
+    top: 70px;
+}
+
+.chord-navigation {
+    list-style-type: none;
+    width: 300px;
+    height: 20px;
+}
+
+.chord-navigation li {
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+    float: left;
+    padding: 10px;
+    border-top: solid 1px #CCC;
+    border-bottom: solid 1px #CCC;
+    border-left: solid 1px #CCC;
+    background: #f9f9f9;
+    margin: 0 0;
+}
+
+.chord-navigation li:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+
+.chord-navigation li:last-of-type {
+    border-right: solid 1px #CCC;
+    border-radius: 0 4px 4px 0;
+}
+
+.chord-navigation li.selected {
+    color: #000;
+    background: #e9e9e9;
+    border-color: #AAA;
+    box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+/* treemap */
+.bar-option {
+    display:none;
+}
+
+/* timeline */
+#next-graph-btn {
+    display:none;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 1px;
+}
