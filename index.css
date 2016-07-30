@@ -1,20 +1,19 @@
 body {
     font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB";
     font-size: 12px;
-    text-align: center;
     font-weight: 300;
+    margin-top: 10px;
 }
 
 #main-div {
     margin: 0 auto;
+    width: 1400px;   /* TODO */
 }
 
 #header-right {
-    text-align: right;
     position: absolute;
-    width: 350px;
-    top: 10px;
-    right: 20px;
+    text-align: left;
+    margin-bottom: 60px;
 }
 
 #chinavis-title {
@@ -23,15 +22,25 @@ body {
 }
 
 #vis-title {
-    padding-left: 30px;
     font-size: 24px;
     color: #000;
     font-weight: bold;
 }
 
+.vis-intro {
+    font-size: 14px;
+}
+
+/* pie */
+#pie-div {
+    float: right;
+    width: 600px;
+}
+
 /* chord */
-#chord-svg-div {
-    margin: 0 auto;
+#chord-div {
+    float: left;
+    margin-top: 80px;
 }
 
 .link {
@@ -56,6 +65,7 @@ text.chord {
     box-shadow: 0 1px 5px rgba(0,0,0,0.4);
     -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
     border: 1px solid rgba(200,200,200,0.85);
+    opacity: 0;
 }
 
 #ip-header {
@@ -94,21 +104,16 @@ text.chord {
 }
 
 /* chord navigation bar */
-.chord-bar {
-    position: absolute;
-    padding: 15px 0 0;
-    margin: 0 10px;
-    left: 10px;
-    top: 70px;
-}
-
 .chord-navigation {
+    text-align: center;
     list-style-type: none;
     width: 300px;
-    height: 20px;
+    margin-top: -10px;
+    margin-left: -40px;
 }
 
 .chord-navigation li {
+    width: 100px;
     color: #999;
     font-size: 14px;
     cursor: pointer;
@@ -118,7 +123,6 @@ text.chord {
     border-bottom: solid 1px #CCC;
     border-left: solid 1px #CCC;
     background: #f9f9f9;
-    margin: 0 0;
 }
 
 .chord-navigation li:first-of-type {
@@ -138,11 +142,24 @@ text.chord {
 }
 
 /* treemap */
+#treemap-div {
+    float: right;
+    width: 600px;
+    margin-top: 25px;
+}
+
 .bar-option {
+    margin-top: 0px;
     display:none;
 }
 
 /* timeline */
+#timeline-div {
+    float: right;
+    width: 600px;
+    margin-top: 25px;
+}
+
 #next-graph-btn {
     display:none;
 }

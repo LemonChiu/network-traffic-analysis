@@ -91,7 +91,6 @@ function node_onMouseOut(d, type) {
 }
 
 function serverClick(d) {
-    //log(d);
     selectedServer = d.CAND_NAME;
     var nodeGroup = d3.select(document.getElementById("c_" + d.CAND_ID).parentNode);
     var circle = d3.select(document.getElementById("c_" + d.CAND_ID).previousSibling);
@@ -117,6 +116,7 @@ function serverClick(d) {
             .style("fill-opacity", 1)
             .style("fill", otherColor);
     }
+    buildTimeline();
 }
 
 function highlightLink(g, on) {

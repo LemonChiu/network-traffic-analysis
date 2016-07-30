@@ -1,49 +1,33 @@
 function buildPies(){
-  // Load the flight data asynchronously.
-  d3.csv("data/pies.csv", function(flights) {
+  d3.csv("data/pies.csv", function(flows) {
+    var pieMargin = 10,
+        pieRadius = 70,
+        pieColors = d3.scale.category20();
 
-    // Define the margin, radius, and color scale. Colors are assigned lazily, so
-    // if you want deterministic behavior, define a domain for the color scale.
-    var m = 10,
-        r = 130,
-        z = d3.scale.category20c();
-
-    // Define a pie layout: the pie angle encodes the count of flights. Since our
-    // data is stored in CSV, the counts are strings which we coerce to numbers.
     var pie = d3.layout.pie()
         .value(function(d) { return +d.count; })
         .sort(function(a, b) { return b.count - a.count; });
 
-    // Define an arc generator. Note the radius is specified here, not the layout.
     var arc = d3.svg.arc()
-        .innerRadius(r / 2)
-        .outerRadius(r);
+        .innerRadius(pieRadius - 40)
+        .outerRadius(pieRadius);
 
-    // Nest the flight data by originating airport. Our data has the counts per
-    // airport and protocol, but we want to group counts by aiport.
-    var airports = d3.nest()
+    // group counts by communication mode.
+    var communicationMode = d3.nest()
         .key(function(d) { return d.origin; })
-        .entries(flights);
+        .entries(flows);
 
-    // Insert an svg element (with margin) for each airport in our dataset. A
-    // child g element translates the origin to the pie center.
-    var piesSvg = d3.select("#piesSvgDiv").selectAll("div")
-        .data(airports)
+    // Insert an svg element (with margin) for each mode.
+    // A child g element translates the origin to the pie center.
+    var piesSvg = d3.select("#pie-svg-div").selectAll("div")
+        .data(communicationMode)
         .enter().append("div")
-        .style("display", "inline-block")
-        .style("width", (r + m) * 2 + "px")
-        .style("height", (r + m) * 2 + "px")
+        .style("display", "inline")
       .append("svg:svg")
-        .attr("width", (r + m) * 2)
-        .attr("height", (r + m) * 2)
+        .attr("width", (pieRadius + pieMargin * 2) * 2)
+        .attr("height", (pieRadius + pieMargin * 1.5) * 2)
       .append("svg:g")
-        .attr("transform", "translate(" + (r + m) + "," + (r + m) + ")");
-
-    // Add a label for the airport. The `key` comes from the nest operator.
-    piesSvg.append("svg:text")
-        .attr("dy", ".35em")
-        .attr("text-anchor", "middle")
-        .text(function(d) { return d.key; });
+        .attr("transform", "translate(" + (pieRadius + pieMargin) + "," + (pieRadius + pieMargin + 5) + ")");
 
     // Pass the nested per-airport values to the pie layout. The layout computes
     // the angles for each arc. Another g element will hold the arc and its label.
@@ -54,7 +38,7 @@ function buildPies(){
     // Add a colored arc path, with a mouseover title showing the count.
     pieGroup.append("svg:path")
         .attr("d", arc)
-        .style("fill", function(d) { return z(d.data.protocol); })
+        .style("fill", function(d) { return pieColors(d.data.protocol); })
       .append("svg:title")
         .text(function(d) { return d.data.protocol + ": " + d.data.count; });
 
@@ -65,6 +49,13 @@ function buildPies(){
         .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
         .text(function(d) { return d.data.protocol; });
 
+    // Add a label for the airport. The `key` comes from the nest operator.
+    piesSvg.append("svg:text")
+        .attr("dy", pieRadius + 14)
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d.key; })
+        .style("font-size","14px");
+
     // Computes the label angle of an arc, converting from radians to degrees.
     function angle(d) {
       var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
@@ -73,6 +64,12 @@ function buildPies(){
   });
 }
 
+function showPies() {
+    d3.select("#pie-svg-div").selectAll("div")
+        .style("opacity", 1);
+}
+
 function hidePies() {
-    d3.select("#piesSvgDiv").remove();
+    d3.select("#pie-svg-div").selectAll("div")
+        .style("opacity", 0);
 }

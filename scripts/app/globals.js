@@ -1,30 +1,19 @@
-var maxWidth = Math.max(600, Math.min(screen.height, screen.width) - 250);
+var chordWidth = 700;
 
-var outerRadius = maxWidth / 2,
+var outerRadius = chordWidth / 2,
     innerRadius = outerRadius - 50,
     bubbleRadius = innerRadius - 50,
     linkRadius = innerRadius - 20,
-    nodesTranslate = (outerRadius - innerRadius) + (innerRadius - bubbleRadius) + 100,
-    chordsTranslate = (outerRadius + 100);
+    nodesTranslate = (outerRadius - innerRadius) + (innerRadius - bubbleRadius) + 30,
+    chordsTranslate = (outerRadius + 30);
 
-var houseButton = d3.select(document.getElementById("houseButton"));
-var senateButton = d3.select(document.getElementById("senateButton"));
+var houseButton = d3.select("#houseButton");
+var senateButton = d3.select("#senateButton");
 
-var treemapWidth = outerRadius * 2 + 300,
-    treemapHeight = outerRadius * 2 - 50;
-
-d3.select(document.getElementById("mainDiv"))
-    .style("width", (outerRadius * 2 + 400) + "px");
-
-d3.select(document.getElementById("visDiv"))
-    .style("width",(outerRadius * 2 + 400) + "px");
-
-var svg = d3.select(document.getElementById("chord-svg-div"))
-    .style("width", (outerRadius * 2 + 200) + "px")
-    .style("height", (outerRadius * 2 + 100) + "px")
+var svg = d3.select("#chord-svg-div")
     .append("svg")
-    .style("width", (outerRadius * 2 + 200) + "px")
-    .style("height", (outerRadius * 2 + 100) + "px");
+    .style("width", (outerRadius * 2) + "px")
+    .style("height", (outerRadius * 2) + "px");
 
 var chordsSvg = svg.append("g")
     .attr("class","chords")
@@ -65,10 +54,10 @@ var diameter = 960,
     format = d3.format(",d"),
     color = d3.scale.category20c();
 
-var toolTip = d3.select(document.getElementById("tool-tip"));
-var ipHeader = d3.select(document.getElementById("ip-header"));
-var serverHeader = d3.select(document.getElementById("server-header"));
-var totalValue = d3.select(document.getElementById("total-value"));
+var toolTip = d3.select("#tool-tip");
+var ipHeader = d3.select("#ip-header");
+var serverHeader = d3.select("#server-header");
+var totalValue = d3.select("#total-value");
 var repColor = "#FF4A4A";
 var demColor = "#25BFF7";
 var otherColor = "#FFEDAB";

@@ -7,7 +7,11 @@
 </head>
 <body>
     <div id="main-div" >
-        <div id="vis-div">
+        <div id="header-right">
+            <div id="chinavis-title">ChinaVis Data Challenge</div>
+            <div id="vis-title">TCP flow logs of a week</div>
+        </div>
+        <div id="chord-div">
             <div class="chord-bar">
                 <ul class="chord-navigation">
                     <li id="houseButton" class="selected">Access Count</li>
@@ -15,31 +19,33 @@
                 </ul>
             </div>
             <div id="chord-svg-div"></div>
+        </div>
+        <div id="pie-div">
+            <div class="pie-bar">
+                <label class="vis-intro" for="show-pie-btn"><b>Communication Modes</b> (Pies) </label>
+                <input id="show-pie-btn" type="button" value=" Show " onclick="showPies()" />
+                <input id="hide-pie-btn" type="button" value=" Hide " onclick="hidePies()" />
+            </div>
+            <div id="pie-svg-div"></div>
+        </div>
+        <div id="treemap-div">
             <div class="treemap-bar">
-                <label for="show-treemap-btn"><b>Display Treemap</b> (Servers) </label>
-                <input id="show-treemap-btn" type="button" value=" Show " onclick="buildTreemap()" />
+                <label class="vis-intro" for="show-treemap-btn"><b>Servers Classification</b> (Treemap) </label>
+                <input id="show-treemap-btn" type="button" value=" Show " onclick="showTreemap()" />
                 <input id="hide-treemap-btn" type="button" value=" Hide " onclick="hideTreemap()" />
                 <label class="bar-option"><input class="bar-option" type="radio" name="mode" value="size" checked /> Flow Size</label>
                 <label class="bar-option"><input class="bar-option" type="radio" name="mode" value="count" /> Visit Count</label>
             </div>
-            <div id="treemapSvgDiv"></div>
+            <div id="treemap-svg-div"></div>
+        </div>
+        <div id="timeline-div">
             <div class="timeline-bar">
-                <label for="show-timeline-btn"><b>Display Timeline</b> (Network flows) </label>
+                <label class="vis-intro" for="show-timeline-btn"><b>Network Flows</b> (Timeline) </label>
                 <input id="show-timeline-btn" type="button" value=" Show " onclick="buildTimeline()" />
                 <input id="hide-timeline-btn" type="button" value=" Hide " onclick="hideTimeline()" />
                 <input id="next-graph-btn" type="button" value=" Next " onclick="nextGraph()" />
             </div>
-            <div id="timelineSvgDiv"></div>
-            <div class="pies-bar">
-                <label for="show-pies-btn"><b>Display Pies</b> (Mode) </label>
-                <input id="show-pies-btn" type="button" value=" Show " onclick="buildPies()" />
-                <input id="hide-pies-btn" type="button" value=" Hide " onclick="hidePies()" />
-            </div>
-            <div id="piesSvgDiv"></div>
-            <div id="header-right">
-                <div id="chinavis-title">ChinaVis Data Challenge</div>
-                <div id="vis-title">TCP flow logs of a week</div>
-            </div>
+            <div id="timeline-svg-div"></div>
         </div>
     </div>
     <div id="tool-tip">
@@ -50,16 +56,15 @@
         <div id="total-value"></div>
     </div>
     <script type="text/javascript" src="scripts/d3/d3.min.js"></script>
-    <script type="text/javascript" src="scripts/app/treemap.js"></script>
-    <script type="text/javascript" src="scripts/app/timeline.js"></script>
-    <script type="text/javascript" src="scripts/app/pies.js"></script>
-    <!-- chord -->
     <script type="text/javascript" src="scripts/app/globals.js"></script>
     <script type="text/javascript" src="scripts/app/initialize.js"></script>
     <script type="text/javascript" src="scripts/app/events.js"></script>
     <script type="text/javascript" src="scripts/app/data.js"></script>
-    <script type="text/javascript" src="scripts/app/chords.js"></script>
     <script type="text/javascript" src="scripts/app/update.js"></script>
+    <script type="text/javascript" src="scripts/app/chords.js"></script>
+    <script type="text/javascript" src="scripts/app/treemap.js"></script>
+    <script type="text/javascript" src="scripts/app/timeline.js"></script>
+    <script type="text/javascript" src="scripts/app/pies.js"></script>
     <script type="text/javascript" src="scripts/app/main.js"></script>
 </body>
 </html>

@@ -1,34 +1,35 @@
-var graphIndex = 1;
+var graphIndex = 0;
 var nextGraphDuration = 50;
 
-function nextGraph() {
-    var timelineGraph = [linesGraph, areasGraph, stackedAreaGraph, groupedBarGraph, stackedBarGraph,
-        transposeBarGraph, donutGraph, donutExplodeGraph];
-
-    setTimeout(timelineGraph[graphIndex++], nextGraphDuration);
-    if (graphIndex > timelineGraph.length) {
-        graphIndex = 1;
-    }
-}
-var linesGraph, horizonsGraph, areasGraph, stackedAreaGraph, groupedBarGraph, stackedBarGraph,
+var linesGraph, horizonsGraph, stackedAreaGraph, groupedBarGraph, stackedBarGraph,
     transposeBarGraph, donutGraph, donutExplodeGraph;
 
+function nextGraph() {
+    var timelineGraph = [stackedAreaGraph, groupedBarGraph, stackedBarGraph,
+        transposeBarGraph, donutGraph, donutExplodeGraph];
+        console.log(graphIndex);
+    setTimeout(timelineGraph[graphIndex++], nextGraphDuration);
+    if (graphIndex >= timelineGraph.length) {
+        graphIndex = 0;
+    }
+}
+
 function buildTimeline() {
-    d3.select("#timelineSvgDiv").select("svg").remove();
+    d3.select("#timeline-svg-div").select("svg").remove();
     if (serversList.length == 0) {
         return;
     }
     d3.selectAll("#next-graph-btn").style("display", "inline");
-    var m = [20, 20, 30, 20],
-        timelineWidth = outerRadius * 2 + 300,
-        timelineHeight = outerRadius * 2 - 80;
+    var m = [10, 20, 20, 20],
+        timelineWidth = 550,
+        timelineHeight = 220;
 
     var x,
         y,
         duration = 500,
         delay = 500;
 
-    var svg = d3.select("#timelineSvgDiv").append("svg")
+    var svg = d3.select("#timeline-svg-div").append("svg")
         .attr("width", timelineWidth + m[1] + m[3])
         .attr("height", timelineHeight + m[0] + m[2])
         .append("g")
@@ -127,7 +128,7 @@ function buildTimeline() {
     linesGraph = function lines() {
         xAxisSvg.style("display", "none");
         x = d3.time.scale().range([0, timelineWidth - 60]);
-        y = d3.scale.linear().range([timelineHeight / 10 - 10, 0]);
+        y = d3.scale.linear().range([timelineHeight / serversList.length - 10, 0]);
 
         // Compute the minimum and maximum date across symbols.
         x.domain([
@@ -141,7 +142,7 @@ function buildTimeline() {
 
         var g = svg.selectAll(".symbol")
             .attr("transform", function (d, i) {
-                return "translate(0," + (i * timelineHeight / 10) + ")";
+                return "translate(0," + (i * timelineHeight / serversList.length) + ")";
             });
 
         g.each(function (d) {
@@ -189,7 +190,7 @@ function buildTimeline() {
             draw(k);
             if ((k += 2) >= n - 1) {
                 draw(n - 1);
-                setTimeout(horizonsGraph, 500);
+                setTimeout(horizonsGraph, duration);
                 return true;
             }
         });
@@ -202,7 +203,7 @@ function buildTimeline() {
             .attr("id", "clip")
             .append("rect")
             .attr("width", timelineWidth)
-            .attr("height", timelineHeight / 10 - 10);
+            .attr("height", timelineHeight / serversList.length - 10);
 
         var color = d3.scale.ordinal()
             .range(["#c6dbef", "#9ecae1", "#6baed6"]);
@@ -211,21 +212,21 @@ function buildTimeline() {
             .attr("clip-path", "url(#clip)");
 
         area
-            .y0(timelineHeight / 10 - 10);
+            .y0(timelineHeight / serversList.length - 10);
 
         g.select("circle").transition()
             .duration(duration)
             .attr("transform", function (d) {
-                return "translate(" + (timelineWidth - 60) + "," + (-timelineHeight / 10 - 10) + ")";
+                return "translate(" + (timelineWidth - 60) + "," + (-timelineHeight / serversList.length - 10) + ")";
             })
             .remove();
 
         g.select("text").transition()
             .duration(duration)
             .attr("transform", function (d) {
-                return "translate(" + (timelineWidth - 60) + "," + (timelineHeight / 10 - 10) + ")";
+                return "translate(" + (timelineWidth - 60) + "," + (timelineHeight / serversList.length - 10) + ")";
             })
-            .attr("dy", "0em");
+            .attr("dy", "0");
 
         g.each(function (d) {
             y.domain([0, d.maxPrice]);
@@ -235,7 +236,7 @@ function buildTimeline() {
                 .enter().insert("path", ".line")
                 .attr("class", "area")
                 .attr("transform", function (d) {
-                    return "translate(0," + (d * (timelineHeight / 10 - 10)) + ")";
+                    return "translate(0," + (d * (timelineHeight / serversList.length - 10)) + ")";
                 })
                 .attr("d", area(d.values))
                 .style("fill", function (d, i) {
@@ -244,8 +245,6 @@ function buildTimeline() {
                 .style("fill-opacity", 1e-6)
                 .on("mouseover", function (d) { node_onMouseOver(d, "AREA"); })
                 .on("mouseout", function (d) { node_onMouseOut(d, "AREA"); });;
-
-            y.domain([0, d.maxPrice / 3]);
 
             d3.select(this).selectAll(".line").transition()
                 .duration(duration)
@@ -260,14 +259,14 @@ function buildTimeline() {
                     d3.select(this).style("fill-opacity", null);
                 });
         });
-        //setTimeout(areas, duration + delay);
+        setTimeout(areasGraph, 300);
     }
 
     areasGraph = function areas() {
         var g = svg.selectAll(".symbol");
 
         axis
-            .y(timelineHeight / 10 - 10);
+            .y(timelineHeight / serversList.length - 10);
 
         g.select(".line")
             .attr("d", function (d) {
@@ -313,8 +312,6 @@ function buildTimeline() {
             .each("end", function () {
                 d3.select(this).attr("clip-path", null);
             });
-
-        //setTimeout(stackedArea, duration + delay);
     }
 
     stackedAreaGraph = function stackedArea() {
@@ -661,6 +658,6 @@ function buildTimeline() {
 }
 
 function hideTimeline() {
-    d3.select("#timelineSvgDiv").select("svg").remove();
+    d3.select("#timeline-svg-div").select("svg").remove();
     d3.selectAll("#next-graph-btn").style("display", "none");
 }

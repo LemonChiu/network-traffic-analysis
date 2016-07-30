@@ -103,7 +103,6 @@ function updateLinks(links) {
 
         return [link,link2];
     }
-    //log("updateLinks()");
 }
 
 function updateNodes() {
@@ -151,8 +150,6 @@ function updateNodes() {
         .on("click", function(d) { serverClick(d); });
 
     node.exit().remove().transition(500).style("opacity",0);
-
-    //log("updateBubble()");
 }
 
 function updateChords() {
@@ -206,7 +203,6 @@ function updateChords() {
         });
 
     arcGroup.exit().remove();
-    //log("updateChords()");
 }
 
 function trimLabel(label) {

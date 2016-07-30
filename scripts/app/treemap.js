@@ -1,9 +1,9 @@
 function buildTreemap() {
-    d3.select("#treemapSvgDiv").select("svg").remove();
-    if (serversList.length == 0) {
-        return;
-    }
+    d3.select("#treemap-svg-div").select("svg").remove();
     d3.selectAll(".bar-option").style("display", "inline");
+
+    var treemapWidth = 510,
+        treemapHeight = 250;
 
     var x = d3.scale.linear().range([0, treemapWidth]),
         y = d3.scale.linear().range([0, treemapHeight]),
@@ -17,17 +17,17 @@ function buildTreemap() {
         .sticky(true)
         .value(function(d) { return d.size });
 
-    var svgTreemap = d3.select("#treemapSvgDiv")
+    var svgTreemap = d3.select("#treemap-svg-div")
         .attr("class", "chart")
         .append("svg:svg")
         .attr("width", treemapWidth)
         .attr("height", treemapHeight)
         .append("svg:g")
-        .attr("transform", "translate(.5,.5)");
+        .attr("transform", "translate(10, 10)");
 
     d3.json("data/treemap.json", function(error, jsonCount) {
         if (error) {
-            throw error
+            throw error;
         }
 
         node = root = jsonCount;
@@ -114,10 +114,18 @@ function buildTreemap() {
         node = d;
         d3.event.stopPropagation();
     }
-    //log("buildTreemap()");
+}
+
+function showTreemap() {
+    d3.select("#treemap-svg-div").select("svg")
+        .style("opacity", 1);
+    d3.selectAll(".bar-option")
+        .style("display", "inline");
 }
 
 function hideTreemap() {
-    d3.select("#treemapSvgDiv").select("svg").remove();
-    d3.selectAll(".bar-option").style("display", "none");
+    d3.select("#treemap-svg-div").select("svg")
+        .style("opacity", 0);
+    d3.selectAll(".bar-option")
+        .style("display", "none");
 }

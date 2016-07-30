@@ -5,11 +5,12 @@ var counter = 2;
 var renderLinks = [];
 
 function main() {
+    buildPies();
+    buildTreemap();
+    buildTimeline();
     initialize();
     updateNodes();
     updateChords();
-    //console.log("contr.length=" + contr.length)
-    //updateLinks(contr);
     intervalId = setInterval(onInterval,1);
 }
 
@@ -25,7 +26,6 @@ function onInterval() {
             }
         }
         counter = 30;
-        //counter++;
         updateLinks(renderLinks);
     }
 }
