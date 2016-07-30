@@ -4,8 +4,8 @@ var outerRadius = chordWidth / 2,
     innerRadius = outerRadius - 50,
     bubbleRadius = innerRadius - 50,
     linkRadius = innerRadius - 20,
-    nodesTranslate = (outerRadius - innerRadius) + (innerRadius - bubbleRadius) + 30,
-    chordsTranslate = (outerRadius + 30);
+    nodesTranslate = (outerRadius - innerRadius) + (innerRadius - bubbleRadius) + 20,
+    chordsTranslate = (outerRadius + 20);
 
 var houseButton = d3.select("#houseButton");
 var senateButton = d3.select("#senateButton");

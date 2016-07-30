@@ -54,7 +54,7 @@ function buildPies(){
         .attr("dy", pieRadius + 14)
         .attr("text-anchor", "middle")
         .text(function(d) { return d.key; })
-        .style("font-size","14px");
+        .style("font-size","13px");
 
     // Computes the label angle of an arc, converting from radians to degrees.
     function angle(d) {

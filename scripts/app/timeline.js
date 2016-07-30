@@ -20,9 +20,10 @@ function buildTimeline() {
         return;
     }
     d3.selectAll("#next-graph-btn").style("display", "inline");
-    var m = [10, 20, 20, 20],
+    var m = [10, 30, 20, 20],
         timelineWidth = 550,
-        timelineHeight = 220;
+        timelineHeight = 220,
+        verticalSpace = 10;
 
     var x,
         y,
@@ -128,7 +129,7 @@ function buildTimeline() {
     linesGraph = function lines() {
         xAxisSvg.style("display", "none");
         x = d3.time.scale().range([0, timelineWidth - 60]);
-        y = d3.scale.linear().range([timelineHeight / serversList.length - 10, 0]);
+        y = d3.scale.linear().range([timelineHeight / serversList.length - verticalSpace, 0]);
 
         // Compute the minimum and maximum date across symbols.
         x.domain([
@@ -157,11 +158,11 @@ function buildTimeline() {
                     return color(d.key);
                 })
                 .style("stroke", "#000")
-                .style("stroke-width", "2px");
+                .style("stroke-width", "1px");
 
             e.append("text")
-                .attr("x", 12)
-                .attr("dy", ".31em")
+                .attr("dx", "10")
+                .attr("dy", "4")
                 .text(d.key);
         });
 
@@ -202,8 +203,8 @@ function buildTimeline() {
             .append("clipPath")
             .attr("id", "clip")
             .append("rect")
-            .attr("width", timelineWidth)
-            .attr("height", timelineHeight / serversList.length - 10);
+            .attr("width", timelineWidth + m[1] + m[3])
+            .attr("height", timelineHeight / serversList.length - verticalSpace);
 
         var color = d3.scale.ordinal()
             .range(["#c6dbef", "#9ecae1", "#6baed6"]);
@@ -212,19 +213,19 @@ function buildTimeline() {
             .attr("clip-path", "url(#clip)");
 
         area
-            .y0(timelineHeight / serversList.length - 10);
+            .y0(timelineHeight / serversList.length - verticalSpace);
 
         g.select("circle").transition()
             .duration(duration)
             .attr("transform", function (d) {
-                return "translate(" + (timelineWidth - 60) + "," + (-timelineHeight / serversList.length - 10) + ")";
+                return "translate(" + (timelineWidth - 60) + "," + (-timelineHeight / serversList.length - verticalSpace) + ")";
             })
             .remove();
 
         g.select("text").transition()
             .duration(duration)
             .attr("transform", function (d) {
-                return "translate(" + (timelineWidth - 60) + "," + (timelineHeight / serversList.length - 10) + ")";
+                return "translate(" + (timelineWidth - 60) + "," + (timelineHeight / serversList.length - verticalSpace) + ")";
             })
             .attr("dy", "0");
 
@@ -236,7 +237,7 @@ function buildTimeline() {
                 .enter().insert("path", ".line")
                 .attr("class", "area")
                 .attr("transform", function (d) {
-                    return "translate(0," + (d * (timelineHeight / serversList.length - 10)) + ")";
+                    return "translate(0," + (d * (timelineHeight / serversList.length - verticalSpace)) + ")";
                 })
                 .attr("d", area(d.values))
                 .style("fill", function (d, i) {
@@ -259,6 +260,7 @@ function buildTimeline() {
                     d3.select(this).style("fill-opacity", null);
                 });
         });
+
         setTimeout(areasGraph, 300);
     }
 
@@ -266,7 +268,7 @@ function buildTimeline() {
         var g = svg.selectAll(".symbol");
 
         axis
-            .y(timelineHeight / serversList.length - 10);
+            .y(timelineHeight / serversList.length - verticalSpace);
 
         g.select(".line")
             .attr("d", function (d) {
@@ -312,6 +314,8 @@ function buildTimeline() {
             .each("end", function () {
                 d3.select(this).attr("clip-path", null);
             });
+
+        //setTimeout(stackedAreaGraph, duration + delay);
     }
 
     stackedAreaGraph = function stackedArea() {
