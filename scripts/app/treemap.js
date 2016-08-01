@@ -79,7 +79,7 @@ function buildTreemap() {
         return d.size;
     }
 
-    // Access count
+    // Visit count
     function count(d) {
         return d.count;
     }

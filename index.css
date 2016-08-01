@@ -7,7 +7,7 @@ body {
 
 #main-div {
     margin: 0 auto;
-    width: 1400px;   /* TODO */
+    width: 1400px;
 }
 
 #header-right {
@@ -40,7 +40,7 @@ body {
 /* chord */
 #chord-div {
     float: left;
-    margin-top: 80px;
+    margin-top: 130px;
 }
 
 .link {
@@ -157,6 +157,7 @@ text.chord {
 #timeline-div {
     float: right;
     width: 600px;
+    height: 275px;
     margin-top: 25px;
 }
 

@@ -1,26 +1,18 @@
 var graphIndex = 0;
 var nextGraphDuration = 50;
-
 var linesGraph, horizonsGraph, stackedAreaGraph, groupedBarGraph, stackedBarGraph,
     transposeBarGraph, donutGraph, donutExplodeGraph;
 
-function nextGraph() {
-    var timelineGraph = [stackedAreaGraph, groupedBarGraph, stackedBarGraph,
-        transposeBarGraph, donutGraph, donutExplodeGraph];
-        console.log(graphIndex);
-    setTimeout(timelineGraph[graphIndex++], nextGraphDuration);
-    if (graphIndex >= timelineGraph.length) {
-        graphIndex = 0;
-    }
-}
-
 function buildTimeline() {
-    d3.select("#timeline-svg-div").select("svg").remove();
+    removeTimelineSVG();
+    graphIndex = 0;
     if (serversList.length == 0) {
+        d3.selectAll("#next-graph-btn").style("display", "none");
         return;
     }
     d3.selectAll("#next-graph-btn").style("display", "inline");
-    var m = [10, 30, 20, 20],
+
+    var m = [20, 30, 20, 20],
         timelineWidth = 550,
         timelineHeight = 220,
         verticalSpace = 10;
@@ -28,7 +20,7 @@ function buildTimeline() {
     var x,
         y,
         duration = 500,
-        delay = 500;
+        delay = 2000;
 
     var svg = d3.select("#timeline-svg-div").append("svg")
         .attr("width", timelineWidth + m[1] + m[3])
@@ -123,7 +115,7 @@ function buildTimeline() {
             .call(xAxis)
             .style("display", "none");
 
-        setTimeout(linesGraph, nextGraphDuration);
+        setTimeout(linesGraph, duration);
     });
 
     linesGraph = function lines() {
@@ -191,7 +183,7 @@ function buildTimeline() {
             draw(k);
             if ((k += 2) >= n - 1) {
                 draw(n - 1);
-                setTimeout(horizonsGraph, duration);
+                horizonsGraph();
                 return true;
             }
         });
@@ -371,7 +363,7 @@ function buildTimeline() {
                 return "translate(" + (timelineWidth - 60) + "," + y(d.price / 2 + d.price0) + ")";
             });
 
-        //setTimeout(overlappingArea, duration + delay);
+        //setTimeout(groupedBarGraph, duration + delay);
     }
 
     groupedBarGraph = function groupedBar() {
@@ -423,7 +415,7 @@ function buildTimeline() {
                 .style("fill-opacity", 1);
         });
 
-        //setTimeout(stackedBar, duration + delay);
+        //setTimeout(stackedBarGraph, duration + delay);
     }
 
     stackedBarGraph = function stackedBar() {
@@ -487,7 +479,7 @@ function buildTimeline() {
                     .style("stroke-opacity", 1);
             });
 
-        //setTimeout(transposeBar, duration + symbols[0].values.length * 10 + delay);
+        //setTimeout(transposeBarGraph, duration + symbols[0].values.length * 10 + delay);
     }
 
     transposeBarGraph = function transposeBar() {
@@ -555,7 +547,7 @@ function buildTimeline() {
             .duration(duration)
             .attr("x2", timelineWidth);
 
-        //setTimeout(donut, duration / 2 + symbols[0].values.length * 10 + delay);
+        //setTimeout(donutGraph, duration + delay);
     }
 
     donutGraph = function donut() {
@@ -615,7 +607,7 @@ function buildTimeline() {
             };
         }
 
-        //setTimeout(donutExplode, duration + delay);
+        //setTimeout(donutExplodeGraph, duration + delay);
     }
 
     donutExplodeGraph = function donutExplode() {
@@ -662,6 +654,20 @@ function buildTimeline() {
 }
 
 function hideTimeline() {
-    d3.select("#timeline-svg-div").select("svg").remove();
+    removeTimelineSVG();
     d3.selectAll("#next-graph-btn").style("display", "none");
+}
+
+function nextGraph() {
+    var timelineGraph = [stackedAreaGraph, groupedBarGraph, stackedBarGraph,
+        transposeBarGraph, donutGraph, donutExplodeGraph];
+
+    setTimeout(timelineGraph[graphIndex++], nextGraphDuration);
+    if (graphIndex >= timelineGraph.length) {
+        graphIndex = 0;
+    }
+}
+
+function removeTimelineSVG() {
+    d3.select("#timeline-svg-div").selectAll("svg").remove();
 }

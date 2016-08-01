@@ -5,26 +5,27 @@ var counter = 2;
 var renderLinks = [];
 
 function main() {
-    buildPies();
-    buildTreemap();
-    buildTimeline();
     initialize();
     updateNodes();
     updateChords();
-    intervalId = setInterval(onInterval,1);
+    intervalId = setInterval(onInterval, 1);
+
+    buildPies();
+    buildTreemap();
+    buildTimeline();
 }
 
 function onInterval() {
-    if(contr.length == 0) {
+    if (contribution.length === 0) {
         clearInterval(intervalId);
-    }
-    else {
-       // renderLinks=[];
+    } else {
+        // renderLinks=[];
         for (var i = 0; i < counter; i++) {
-            if (contr.length > 0) {
-                renderLinks.push(contr.pop());
+            if (contribution.length > 0) {
+                renderLinks.push(contribution.pop());
             }
         }
+
         counter = 30;
         updateLinks(renderLinks);
     }

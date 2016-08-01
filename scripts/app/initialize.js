@@ -3,24 +3,16 @@ function initialize() {
     renderLinks = [];
     cands = [];
     pacs = [];
-    contr = [];
+    contribution = [];
 
-    if (office == "house") {
+    if (optionType == "visit") {
         var root = {};
-        var d = {};
-        d.value = total_hDems;
-        d.children = h_dems;
 
         var r = {};
-        r.value = total_hReps;
-        r.children = h_reps;
+        r.value = totalIPVisitCount;
+        r.children = IPVisit;
 
-        var o = {};
-        o.value = total_hOthers;
-        o.children = h_others;
-
-        root.children = [r,d,o];
-        root.PTY = "root";
+        root.children = [r];
 
         nodes = bubble.nodes(root);
 
@@ -36,28 +28,17 @@ function initialize() {
             }
         })
 
-        //log("totalCandAmount = " + totalCandAmount);
-        pacs = pacsHouse;
-        c_house.forEach(function (d) {
-            contr.push(d);
+        pacs = groupsVisit;
+        countContributions.forEach(function (d) {
+            contribution.push(d);
         });
-    }
-    else if (office == "senate") {
+    } else if (optionType == "flow") {
         var root = {};
         var d = {};
-        d.value = total_sDems;
-        d.children = s_dems;
+        d.value = totalIPFlowSize;
+        d.children = ipFlow;
 
-        var r = {};
-        r.value = total_sReps;
-        r.children = s_reps;
-
-        var o = {};
-        o.value = total_sOthers;
-        o.children = s_others;
-
-        root.children = [r,d,o];
-        root.PTY = "root";
+        root.children = [d];
 
         nodes = bubble.nodes(root);
 
@@ -73,18 +54,18 @@ function initialize() {
             }
         })
 
-        pacs = pacsSenate;
-        c_senate.forEach(function (d) {
-            contr.push(d);
+        pacs = groupsFlow;
+        flowContributions.forEach(function (d) {
+            contribution.push(d);
         });
     }
 
     buildChords();
 
-    var totalContr = 0;
-    contr.forEach(function(d) {
+    var totalContribution = 0;
+    contribution.forEach(function(d) {
         nodesById[d.CAND_ID].relatedLinks.push(d);
-        chordsById[d.CMTE_ID].relatedLinks.push(d);
-        totalContr += Number(d.TRANSACTION_AMT);
+        chordsById[d.GROUP_ID].relatedLinks.push(d);
+        totalContribution += Number(d.TRANSACTION_AMT);
     })
 }

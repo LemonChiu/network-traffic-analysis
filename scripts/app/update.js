@@ -14,19 +14,18 @@ function updateLinks(links) {
         .attr("class", "arc")
         .append("path")
         .attr("id", function (d) { return "a_" + d.Key;})
-        .style("fill", function(d) { return (d.PTY == "DEM") ? demColor : (d.PTY == "REP") ? repColor : otherColor; })
+        .style("fill", function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
         .style("fill-opacity", 0.2)
         .attr("d", function(d, i) {
             var newArc = {};
-            var relatedChord = chordsById[d.CMTE_ID];
-            // console.log("CMTE_ID=" + d.CMTE_ID);
+            var relatedChord = chordsById[d.GROUP_ID];
             newArc.startAngle = relatedChord.currentAngle;
             relatedChord.currentAngle = relatedChord.currentAngle + (Number(d.TRANSACTION_AMT) / relatedChord.value) * (relatedChord.endAngle - relatedChord.startAngle);
             newArc.endAngle = relatedChord.currentAngle;
             newArc.value = Number(d.TRANSACTION_AMT);
             var arc = d3.svg.arc(d, i).innerRadius(linkRadius).outerRadius(innerRadius);
             totalContributions += newArc.value;
-            //total.text(formatCurrency(totalContributions));
+            //total.text(formatAmount(totalContributions));
 
             return arc(newArc,i);
         })
@@ -45,11 +44,11 @@ function updateLinks(links) {
 
               return diag;
         })
-        .style("stroke",function(d) { return (d.PTY == "DEM") ? demColor : (d.PTY == "REP") ? repColor : otherColor; })
+        .style("stroke",function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
         .style("stroke-opacity", 0.05)
         //.style("stroke-width", function (d) { return d.links[0].strokeWeight;})
         .style("fill-opacity", 0.1)
-        .style("fill",function(d) { return (d.PTY == "DEM") ? demColor : (d.PTY == "REP") ? repColor : otherColor; })
+        .style("fill",function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
         .on("mouseover", function (d) { node_onMouseOver(d,"CONTRIBUTION");})
         .on("mouseout", function (d) {node_onMouseOut(d,"CONTRIBUTION"); });
 
@@ -57,7 +56,7 @@ function updateLinks(links) {
     enter.append("g")
         .attr("class","node")
         .append("circle")
-        .style("fill",function(d) { return (d.PTY == "DEM") ? demColor : (d.PTY == "REP") ? repColor : otherColor; })
+        .style("fill",function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
         .style("fill-opacity", 0.5)
         .style("stroke-opacity", 1)
         .attr("r", function(d) {
@@ -80,7 +79,7 @@ function updateLinks(links) {
         var link2 = {};
         var source2 = {};
 
-        var relatedChord = chordsById[d.CMTE_ID];
+        var relatedChord = chordsById[d.GROUP_ID];
         var relatedNode = nodesById[d.CAND_ID];
         var r = linkRadius;
         var currX = (r * Math.cos(relatedChord.currentLinkAngle - 1.57079633));
@@ -107,7 +106,7 @@ function updateLinks(links) {
 
 function updateNodes() {
     var node = nodesSvg.selectAll("g.node")
-        .data(cands, function (d,i) {
+        .data(cands, function (d) {
             return d.CAND_ID;
         });
 
@@ -121,11 +120,11 @@ function updateNodes() {
         .attr("r", function(d) { return d.r; })
         .style("fill-opacity", function (d) { return (d.depth < 2) ? 0 : 0.05})
         .style("stroke",function(d) {
-            return ((d.PTY == 'DEM') ? demColor : (d.PTY == "REP") ? repColor : otherColor);
+            return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor;
         })
         .style("stroke-opacity", function (d) { return (d.depth < 2) ? 0 : 0.8})
         .style("fill", function(d) {
-            return ((d.PTY == 'DEM') ? demColor : (d.PTY == "REP") ? repColor : otherColor);
+            return (d.Type == "flow") ? flowColor : (d.Type == "visit") ? visitColor : otherColor;
         });
 
     var g = enter.append("g")
@@ -169,7 +168,7 @@ function updateChords() {
                 + "translate(" + (innerRadius + 6) + ")"
                 + (d.angle > Math.PI ? "rotate(180)" : "");
         })
-        .text(function(d) { return trimLabel(pacsById[office + "_" + d.label].CMTE_NM); })
+        .text(function(d) { return trimLabel(groupsById[optionType + "_" + d.label].GROUP_NAME); })
         .on("mouseover", function (d) { node_onMouseOver(d, "PAC"); })
         .on("mouseout", function (d) { node_onMouseOut(d, "PAC"); });
 
@@ -184,7 +183,7 @@ function updateChords() {
                 + (d.angle > Math.PI ? "rotate(180)" : "");
         })
         .style("fill", "#777")
-        .text(function(d) { return trimLabel(pacsById[office + "_" + d.label].CMTE_NM); });
+        .text(function(d) { return trimLabel(groupsById[optionType + "_" + d.label].GROUP_NAME); });
 
     enter.append("path")
         .style("fill-opacity", 0)

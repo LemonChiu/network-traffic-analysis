@@ -27,7 +27,7 @@ function buildChords() {
 
     // Compute a unique index for each package name
     pacs.forEach(function(d) {
-        d = d.CMTE_ID;
+        d = d.GROUP_ID;
         if (!(d in indexByName)) {
             nameByIndex[n] = d;
             indexByName[d] = n++;
@@ -35,13 +35,13 @@ function buildChords() {
     });
 
     pacs.forEach(function(d) {
-        var source = indexByName[d.CMTE_ID],
+        var source = indexByName[d.GROUP_ID],
             row = matrix[source];
         if (!row) {
             row = matrix[source] = [];
             for (var i = -1; ++i < n;) row[i] = 0;
         }
-        row[indexByName[d.CMTE_ID]] = Number(d.Amount);
+        row[indexByName[d.GROUP_ID]] = Number(d.Amount);
         totalPacAmount += Number(d.Amount);
     });
 

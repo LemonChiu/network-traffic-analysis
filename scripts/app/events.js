@@ -1,5 +1,5 @@
-function node_onMouseOver(d, type) {
-    if (type == "CAND") {
+function node_onMouseOver(d, selectType) {
+    if (selectType == "CAND") {
         if (d.depth < 2) {
             return;
         }
@@ -9,43 +9,39 @@ function node_onMouseOver(d, type) {
 
         serverHeader.text("Possible Server");
         ipHeader.text(d.CAND_NAME);
-        totalValue.text(formatServerTotal(d.OFFICE) + formatCurrency(Number(d.Amount)));
+        totalValue.text(formatServerTotal(d.Type) + formatAmount(Number(d.Amount)));
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","100px");
 
         highlightLinks(d,true);
-    } else if (type == "CONTRIBUTION") {
-        /*
-        Highlight chord stroke
-         */
+    } else if (selectType == "CONTRIBUTION") {
+        /* Highlight chord stroke */
         toolTip.transition()
             .duration(200)
             .style("opacity", "0.7");
 
-        serverHeader.text("SIP: " + pacsById[office + "_" + d.CMTE_ID].CMTE_NM);
+        serverHeader.text("SIP: " + groupsById[optionType + "_" + d.GROUP_ID].GROUP_NAME);
         ipHeader.text("DIP: " + d.CAND_NAME);
-        totalValue.text(formatCurrency(Number(d.TRANSACTION_AMT)));
+        totalValue.text(formatAmount(Number(d.TRANSACTION_AMT)));
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","100px");
         highlightLink(d,true);
-    } else if (type == "PAC") {
-        /*
-        highlight all contributions and all candidates
-         */
+    } else if (selectType == "PAC") {
+        /* Highlight all contributions and all candidates */
         toolTip.transition()
             .duration(200)
             .style("opacity", "0.7");
 
         serverHeader.text("Source IP Address");
-        ipHeader.text(pacsById[office + "_" + d.label].CMTE_NM);
-        totalValue.text("Total: " + formatCurrency(pacsById[office + "_" + d.label].Amount));
+        ipHeader.text(groupsById[optionType + "_" + d.label].GROUP_NAME);
+        totalValue.text("Total: " + formatAmount(groupsById[optionType + "_" + d.label].Amount));
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","110px");
         highlightLinks(chordsById[d.label],true);
-    } else if (type == "RECT") {
+    } else if (selectType == "RECT") {
         toolTip.transition()
             .duration(200)
             .style("opacity", "0.7");
@@ -59,7 +55,7 @@ function node_onMouseOver(d, type) {
         toolTip.style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 75) + "px")
             .style("height","110px");
-    } else if (type == "AREA") {
+    } else if (selectType == "AREA") {
         if (d.key) {
         toolTip.transition()
             .duration(200)
@@ -74,14 +70,14 @@ function node_onMouseOver(d, type) {
     }
 }
 
-function node_onMouseOut(d, type) {
-    if (type == "CAND") {
+function node_onMouseOut(d, selectType) {
+    if (selectType == "CAND") {
         highlightLinks(d,false);
     }
-    else if (type == "CONTRIBUTION") {
+    else if (selectType == "CONTRIBUTION") {
         highlightLink(d, false);
     }
-    else if (type == "PAC") {
+    else if (selectType == "PAC") {
         highlightLinks(chordsById[d.label],false);
     }
 
@@ -101,7 +97,7 @@ function serverClick(d) {
         circle.transition(150)
             .style("fill-opacity", 0.05)
             .style("fill", function(d) {
-                return (d.PTY == "DEM") ? demColor : (d.PTY == "REP") ? repColor : otherColor;
+                return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor;
             });
     } else { //Doesn't contain the node
         serversList.push(selectedServer)
@@ -116,14 +112,12 @@ function serverClick(d) {
             .style("fill-opacity", 1)
             .style("fill", otherColor);
     }
+
     buildTimeline();
 }
 
 function highlightLink(g, on) {
     var opacity = ((on == true) ? 0.9 : 0.1);
-
-    // console.log("fadeHandler(" + opacity + ")");
-    // highlightSvg.style("opacity",opacity);
 
     var link = d3.select(document.getElementById("l_" + g.Key));
     link.transition((on == true) ? 150 : 550)
@@ -138,7 +132,7 @@ function highlightLink(g, on) {
     circ.transition((on == true) ? 150 : 550)
         .style("opacity", ((on == true) ? 1 : 0.05));
 
-    var text = d3.select(document.getElementById("t_" + g.CMTE_ID));
+    var text = d3.select(document.getElementById("t_" + g.GROUP_ID));
     text.transition((on == true) ? 0 : 550)
         .style("fill",(on == true) ? "#000" : "#777")
         .style("font-size",(on == true) ? "14px" : "8px")
@@ -151,11 +145,11 @@ function highlightLinks(d, on) {
     })
 }
 
-senateButton.on("click", function(d) {
+flowSizeButton.on("click", function(d) {
     //linkGroup.selectAll("g.links").remove();
-    senateButton.attr("class", "selected");
-    houseButton.attr("class", null);
-    office = "senate";
+    flowSizeButton.attr("class", "selected");
+    visitCountButton.attr("class", null);
+    optionType = "flow";
     serversList = [];
     nodesSvg.selectAll("g.node").remove();
     linksSvg.selectAll("g.links").remove();
@@ -165,11 +159,11 @@ senateButton.on("click", function(d) {
     main();
 });
 
-houseButton.on("click", function (d) {
+visitCountButton.on("click", function (d) {
     //linkGroup.selectAll("g.links").remove();
-    senateButton.attr("class", null);
-    houseButton.attr("class","selected");
-    office = "house";
+    flowSizeButton.attr("class", null);
+    visitCountButton.attr("class","selected");
+    optionType = "visit";
     serversList = [];
     nodesSvg.selectAll("g.node").remove();;
     linksSvg.selectAll("g.links").remove();

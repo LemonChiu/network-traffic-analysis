@@ -3,120 +3,98 @@ var numCalls = 0;
 
 function fetchData() {
     dataCalls = [];
-    //dataDispatch.on("end",onDataFetched)
-    addStream("data/candidates_count.csv", onFetchCandidatesHouse);
-    addStream("data/candidates_flow.csv", onFetchCandidatesSenate);
-    addStream("data/contributions_count.csv", onFetchContributionsHouse);
-    addStream("data/contributions_flow.csv", onFetchContributionsSenate);
-    addStream("data/groups_count.csv", onFetchPacsHouse);
-    addStream("data/groups_flow.csv", onFetchPacsSenate);
+
+    addStream("data/candidates_visit.csv", onFetchCandidatesCount);
+    addStream("data/candidates_flow.csv", onFetchCandidatesFlow);
+    addStream("data/contributions_visit.csv", onFetchContributionsCount);
+    addStream("data/contributions_flow.csv", onFetchContributionsFlow);
+    addStream("data/groups_visit.csv", onFetchGroupsVisit);
+    addStream("data/groups_flow.csv", onFetchGroupsFlow);
+
     startFetch();
 }
 
-function onFetchCandidatesHouse(csv) {
+function onFetchCandidatesCount(csv) {
     for (var i = 0; i < csv.length; i++) {
-        var r = csv[i];
-        r.value = Number(r.Amount);
-        cns[r.CAND_ID] = r;
-        house.push(r);
-        if (r.PTY == "REP") {
-            h_reps.push(r);
-            total_hReps += r.value;
-        }
-        else if (r.PTY == "DEM") {
-            h_dems.push(r)
-            total_hDems += r.value;
-        }
-        else {
-            h_others.push(r);
-            total_hOthers += r.value;
-        }
+        var row = csv[i];
+        row.value = Number(row.Amount);
+        candidates[row.CAND_ID] = row;
+
+        IPVisit.push(row);
+        totalIPVisitCount += row.value;
     }
-    //log("onFetchCandidatesHouse()");
+
     endFetch();
 }
 
-function onFetchCandidatesSenate(csv) {
+function onFetchCandidatesFlow(csv) {
     for (var i = 0; i < csv.length; i++) {
-        var r = csv[i];
-        r.value = Number(r.Amount);
-        cns[r.CAND_ID]=r;
-        senate.push(r);
-        if (r.PTY == "REP") {
-            s_reps.push(r);
-            total_sReps += r.value;
-        }
-        else if (r.PTY == "DEM") {
-            s_dems.push(r)
-            total_sDems += r.value;
-        }
-        else {
-            s_others.push(r);
-            total_sOthers += r.value;
-        }
+        var row = csv[i];
+        row.value = Number(row.Amount);
+        candidates[row.CAND_ID]=row;
+
+        ipFlow.push(row);
+        totalIPFlowSize += row.value;
     }
-    //log("onFetchCandidatesSenate()");
+
     endFetch();
 }
 
-function onFetchContributionsHouse(csv) {
+function onFetchContributionsCount(csv) {
     var i = 0;
     csv.forEach(function(d) {
-        d.Key = "H" + (i++);
-        contributions.push(d);
-        c_house.push(d);
+        d.Key = "C" + (i++);
+        countContributions.push(d);
     });
-    //log("onFetchContributionsHouse()");
+
     endFetch();
 }
 
-function onFetchContributionsSenate(csv) {
+function onFetchContributionsFlow(csv) {
     var i = 0;
     csv.forEach(function(d) {
-        d.Key = "S" + (i++);
-        contributions.push(d);
-        c_senate.push(d);
+        d.Key = "F" + (i++);
+        flowContributions.push(d);
     });
-    //log("onFetchContributionsSenate()");
+
     endFetch();
 }
 
-function onFetchPacsHouse(csv) {
-    pacsHouse = csv;
-    for (var i = 0; i < pacsHouse.length; i++) {
-        pacsById["house_" + pacsHouse[i].CMTE_ID] = pacsHouse[i];
+function onFetchGroupsVisit(csv) {
+    groupsVisit = csv;
+    for (var i = 0; i < groupsVisit.length; i++) {
+        groupsById["visit_" + groupsVisit[i].GROUP_ID] = groupsVisit[i];
     }
-    //log("onFetchPacsHouse()");
+
     endFetch();
 }
 
-function onFetchPacsSenate(csv) {
-    pacsSenate = csv;
-    for (var i = 0; i < pacsSenate.length; i++) {
-        pacsById["senate_" + pacsSenate[i].CMTE_ID]=pacsSenate[i];
+function onFetchGroupsFlow(csv) {
+    groupsFlow = csv;
+    for (var i = 0; i < groupsFlow.length; i++) {
+        groupsById["flow_" + groupsFlow[i].GROUP_ID] = groupsFlow[i];
     }
-    //log("onFetchPacsSenate()");
+
     endFetch();
 }
 
-function addStream(file,func) {
-    var o = {};
-    o.file = file;
-    o.function = func;
-    dataCalls.push(o);
+function addStream(file, func) {
+    var fileFunctionObject = {};
+    fileFunctionObject.file = file;
+    fileFunctionObject.function = func;
+    dataCalls.push(fileFunctionObject);
 }
 
 function startFetch() {
     numCalls = dataCalls.length;
     dataCalls.forEach(function (d) {
         d3.csv(d.file, d.function);
-    })
+    });
 }
 
 function endFetch() {
     numCalls--;
-    if (numCalls==0) {
-        //dataDispatch.end();
+    if (numCalls === 0) {
         main();
     }
 }

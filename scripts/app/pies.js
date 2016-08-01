@@ -9,7 +9,7 @@ function buildPies(){
         .sort(function(a, b) { return b.count - a.count; });
 
     var arc = d3.svg.arc()
-        .innerRadius(pieRadius - 40)
+        .innerRadius(pieRadius / 2)
         .outerRadius(pieRadius);
 
     // group counts by communication mode.
