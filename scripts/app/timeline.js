@@ -70,12 +70,11 @@ function buildTimeline() {
 
     d3.csv("data/timeline.csv", function (data) {
         var parse = d3.time.format("%H:%M").parse;
-        var filteredData = data.filter(function(d)
-        {
+        var filteredData = data.filter(function(d) {
             if (contains(serversList, d.symbol)) {
                 return d;
             }
-        })
+        });
 
         // Nest stock values by symbol.
         symbols = d3.nest()
@@ -187,7 +186,7 @@ function buildTimeline() {
                 return true;
             }
         });
-    }
+    };
 
     horizonsGraph = function horizons() {
         xAxisSvg.style("display", "block");
@@ -237,8 +236,9 @@ function buildTimeline() {
                 })
                 .style("fill-opacity", 1e-6)
                 .on("mouseover", function (d) { node_onMouseOver(d, "AREA"); })
-                .on("mouseout", function (d) { node_onMouseOut(d, "AREA"); });;
-
+                .on("mouseout", function (d) {
+                    node_onMouseOut(d, "AREA");
+                });
             d3.select(this).selectAll(".line").transition()
                 .duration(duration)
                 .attr("d", line(d.values))
@@ -254,7 +254,7 @@ function buildTimeline() {
         });
 
         setTimeout(areasGraph, 300);
-    }
+    };
 
     areasGraph = function areas() {
         var g = svg.selectAll(".symbol");
@@ -308,7 +308,7 @@ function buildTimeline() {
             });
 
         //setTimeout(stackedAreaGraph, duration + delay);
-    }
+    };
 
     stackedAreaGraph = function stackedArea() {
         var stack = d3.layout.stack()
@@ -364,7 +364,7 @@ function buildTimeline() {
             });
 
         //setTimeout(groupedBarGraph, duration + delay);
-    }
+    };
 
     groupedBarGraph = function groupedBar() {
         x = d3.scale.ordinal()
@@ -416,7 +416,7 @@ function buildTimeline() {
         });
 
         //setTimeout(stackedBarGraph, duration + delay);
-    }
+    };
 
     stackedBarGraph = function stackedBar() {
         x.rangeRoundBands([0, timelineWidth - 60], .1);
@@ -480,7 +480,7 @@ function buildTimeline() {
             });
 
         //setTimeout(transposeBarGraph, duration + symbols[0].values.length * 10 + delay);
-    }
+    };
 
     transposeBarGraph = function transposeBar() {
         xAxisSvg.style("display", "none");
@@ -548,7 +548,7 @@ function buildTimeline() {
             .attr("x2", timelineWidth);
 
         //setTimeout(donutGraph, duration + delay);
-    }
+    };
 
     donutGraph = function donut() {
         var g = svg.selectAll(".symbol");
@@ -608,7 +608,7 @@ function buildTimeline() {
         }
 
         //setTimeout(donutExplodeGraph, duration + delay);
-    }
+    };
 
     donutExplodeGraph = function donutExplode() {
         var r0a = timelineHeight / 2 - x.rangeBand() / 2,
@@ -650,7 +650,7 @@ function buildTimeline() {
             svg.selectAll("g").data(symbols).enter().append("g").attr("class", "symbol");
             buildTimeline();
         }, duration);
-    }
+    };
 }
 
 function hideTimeline() {

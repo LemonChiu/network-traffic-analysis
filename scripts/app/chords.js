@@ -10,7 +10,7 @@ function buildChords() {
         l.angle = 0;
         labels.push(l);
 
-        var c = {}
+        var c = {};
         c.label = "null";
         c.source = {};
         c.target = {};
@@ -48,7 +48,7 @@ function buildChords() {
 
     chords.forEach(function (d) {
         d.label = nameByIndex[i];
-        d.angle = (d.source.startAngle + d.source.endAngle) / 2
+        d.angle = (d.source.startAngle + d.source.endAngle) / 2;
         var o = {};
         o.startAngle = d.source.startAngle;
         o.endAngle = d.source.endAngle;

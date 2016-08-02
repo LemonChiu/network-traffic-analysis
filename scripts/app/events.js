@@ -98,7 +98,7 @@ function serverClick(d) {
                 return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor;
             });
     } else { // Doesn't contain the node
-        serversList.push(selectedServer)
+        serversList.push(selectedServer);
 
         nodeGroup.append("text")
             .attr("class", "server-name")
@@ -159,7 +159,7 @@ visitCountButton.on("click", function (d) {
     visitCountButton.attr("class","selected");
     optionType = "visit";
     serversList = [];
-    nodesSvg.selectAll("g.node").remove();;
+    nodesSvg.selectAll("g.node").remove();
     linksSvg.selectAll("g.links").remove();
     clearInterval(intervalId);
     main();

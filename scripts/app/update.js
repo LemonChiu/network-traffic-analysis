@@ -33,12 +33,12 @@ function updateLinks(links) {
         .attr("class", "link")
         .attr("id", function(d) { return "l_" + d.Key; })
         .attr("d", function(d, i) {
-              d.links = createLinks(d);
-              var diag = diagonal(d.links[0], i);
-              diag += "L" + String(diagonal(d.links[1], i)).substr(1);
-              diag += "A" + (linkRadius) + "," + (linkRadius) + " 0 0, 0 " +  d.links[0].source.x + "," + d.links[0].source.y;
+            d.links = createLinks(d);
+            var diag = diagonal(d.links[0], i);
+            diag += "L" + String(diagonal(d.links[1], i)).substr(1);
+            diag += "A" + (linkRadius) + "," + (linkRadius) + " 0 0, 0 " +  d.links[0].source.x + "," + d.links[0].source.y;
 
-              return diag;
+            return diag;
         })
         .style("stroke",function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
         .style("stroke-opacity", 0.05)
@@ -63,7 +63,7 @@ function updateLinks(links) {
         })
         .attr("transform", function (d) {
             return "translate(" + (d.links[0].target.x) + "," + (d.links[0].target.y) + ")";
-        })
+        });
 
     linkGroup.exit().remove();
 
@@ -126,14 +126,14 @@ function updateNodes() {
         .attr("id", function(d) { return "c_" + d.CAND_ID; })
         .style("opacity",0);
 
-        g.append("circle")
+    g.append("circle")
         .attr("r", function(d) { return d.r + 2; })
         .style("fill-opacity", 0)
         .style("stroke", "#FFF")
         .style("stroke-width", 2.5)
         .style("stroke-opacity", .7);
 
-        g.append("circle")
+    g.append("circle")
         .attr("r", function(d) { return d.r; })
         .style("fill-opacity", 0)
         .style("stroke", "#000")
@@ -185,8 +185,8 @@ function updateChords() {
         .style("stroke", "#555")
         .style("stroke-opacity", 0.4)
         .attr("d", function(d, i) {
-                var arc = d3.svg.arc(d, i).innerRadius(innerRadius - 20).outerRadius(innerRadius);
-                return arc(d.source, i);
+            var arc = d3.svg.arc(d, i).innerRadius(innerRadius - 20).outerRadius(innerRadius);
+            return arc(d.source, i);
         });
 
     arcGroup.transition()

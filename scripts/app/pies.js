@@ -52,7 +52,7 @@ function buildPies(){
             var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
             return a > 90 ? a - 180 : a;
         }
-  });
+    });
 }
 
 function showPies() {
