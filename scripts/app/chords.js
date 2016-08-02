@@ -3,7 +3,7 @@ function buildChords() {
     labels = [];
     chords = [];
 
-    for (var i = 0; i < pacs.length; i++) {
+    for (var i = 0; i < groups.length; i++) {
         var l = {};
         l.index = i;
         l.label = "null";
@@ -17,16 +17,12 @@ function buildChords() {
         chords.push(c);
     }
 
-    buf_indexByName = indexByName;
-
     indexByName = [];
     nameByIndex = [];
-    n = 0;
+    var n = 0;
 
-    var totalPacAmount=0;
-
-    // Compute a unique index for each package name
-    pacs.forEach(function(d) {
+    // Compute a unique index for each group name
+    groups.forEach(function(d) {
         d = d.GROUP_ID;
         if (!(d in indexByName)) {
             nameByIndex[n] = d;
@@ -34,22 +30,22 @@ function buildChords() {
         }
     });
 
-    pacs.forEach(function(d) {
+    groups.forEach(function(d) {
         var source = indexByName[d.GROUP_ID],
             row = matrix[source];
         if (!row) {
             row = matrix[source] = [];
-            for (var i = -1; ++i < n;) row[i] = 0;
+            for (var i = -1; ++i < n;) {
+                row[i] = 0;
+            }
         }
         row[indexByName[d.GROUP_ID]] = Number(d.Amount);
-        totalPacAmount += Number(d.Amount);
     });
 
     chord.matrix(matrix);
-
     chords = chord.chords();
-
     var i = 0;
+
     chords.forEach(function (d) {
         d.label = nameByIndex[i];
         d.angle = (d.source.startAngle + d.source.endAngle) / 2
@@ -66,28 +62,4 @@ function buildChords() {
         chordsById[d.label]= o;
         i++;
     });
-
-    function getFirstIndex(index,indexes) {
-        for (var i = 0; i < chordCount; i++) {
-            var found = false;
-            for (var y = index; y < indexes.length; y++) {
-                if (i == indexes[y]) {
-                    found=true;
-                }
-            }
-            if (found == false) {
-                return i;
-                //  break;
-            }
-        }
-    }
-
-    function getLabelIndex(name) {
-        for (var i=0; i < chordCount; i++) {
-            if (buffer[i].label == name) {
-                return i;
-            }
-        }
-        return -1;
-    }
 }

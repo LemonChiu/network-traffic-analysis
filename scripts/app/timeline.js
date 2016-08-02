@@ -6,13 +6,13 @@ var linesGraph, horizonsGraph, stackedAreaGraph, groupedBarGraph, stackedBarGrap
 function buildTimeline() {
     removeTimelineSVG();
     graphIndex = 0;
-    if (serversList.length == 0) {
+    if (serversList.length === 0) {
         d3.selectAll("#next-graph-btn").style("display", "none");
         return;
     }
     d3.selectAll("#next-graph-btn").style("display", "inline");
 
-    var m = [20, 30, 20, 20],
+    var margin = [20, 30, 20, 20],
         timelineWidth = 550,
         timelineHeight = 220,
         verticalSpace = 10;
@@ -20,13 +20,13 @@ function buildTimeline() {
     var x,
         y,
         duration = 500,
-        delay = 2000;
+        delay = 1000;
 
     var svg = d3.select("#timeline-svg-div").append("svg")
-        .attr("width", timelineWidth + m[1] + m[3])
-        .attr("height", timelineHeight + m[0] + m[2])
+        .attr("width", timelineWidth + margin[1] + margin[3])
+        .attr("height", timelineHeight + margin[0] + margin[2])
         .append("g")
-        .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+        .attr("transform", "translate(" + margin[3] + "," + margin[0] + ")");
 
     var stocks,
         symbols;
@@ -147,7 +147,7 @@ function buildTimeline() {
             e.append("circle")
                 .attr("r", 5)
                 .style("fill", function (d) {
-                    return color(d.key);
+                    return globalColor(d.key);
                 })
                 .style("stroke", "#000")
                 .style("stroke-width", "1px");
@@ -195,7 +195,7 @@ function buildTimeline() {
             .append("clipPath")
             .attr("id", "clip")
             .append("rect")
-            .attr("width", timelineWidth + m[1] + m[3])
+            .attr("width", timelineWidth + margin[1] + margin[3])
             .attr("height", timelineHeight / serversList.length - verticalSpace);
 
         var color = d3.scale.ordinal()
@@ -293,7 +293,7 @@ function buildTimeline() {
                 })
                 .transition()
                 .duration(duration)
-                .style("fill", color(d.key))
+                .style("fill", globalColor(d.key))
                 .attr("d", area(d.values));
         });
 
@@ -408,7 +408,7 @@ function buildTimeline() {
                 .attr("height", function (d) {
                     return timelineHeight - y(d.price);
                 })
-                .style("fill", color(p.key))
+                .style("fill", globalColor(p.key))
                 .style("fill-opacity", 1e-6)
                 .transition()
                 .duration(duration)
@@ -564,7 +564,7 @@ function buildTimeline() {
 
         g.append("path")
             .style("fill", function (d) {
-                return color(d.key);
+                return globalColor(d.key);
             })
             .data(function () {
                 return pie(symbols);

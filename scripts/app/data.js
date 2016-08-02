@@ -20,7 +20,7 @@ function onFetchCandidatesCount(csv) {
         row.value = Number(row.Amount);
         candidates[row.CAND_ID] = row;
 
-        IPVisit.push(row);
+        ipVisit.push(row);
         totalIPVisitCount += row.value;
     }
 

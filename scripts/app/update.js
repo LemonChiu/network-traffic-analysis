@@ -1,12 +1,10 @@
 function updateLinks(links) {
     linkGroup = linksSvg.selectAll("g.links")
-        .data(links, function(d,i) {
+        .data(links, function(d, i) {
             return d.Key;
         });
 
-    //linkGroup.selectAll("g.links").transition(500).style("opacity",1);
-
-    var enter = linkGroup.enter().append("g").attr("class","links");
+    var enter = linkGroup.enter().append("g").attr("class", "links");
     var update = linkGroup.transition();
 
     /*  ARC SEGMENTS */
@@ -24,10 +22,8 @@ function updateLinks(links) {
             newArc.endAngle = relatedChord.currentAngle;
             newArc.value = Number(d.TRANSACTION_AMT);
             var arc = d3.svg.arc(d, i).innerRadius(linkRadius).outerRadius(innerRadius);
-            totalContributions += newArc.value;
-            //total.text(formatAmount(totalContributions));
 
-            return arc(newArc,i);
+            return arc(newArc, i);
         })
         .on("mouseover", function(d) { node_onMouseOver(d, "CONTRIBUTION"); })
         .on("mouseout", function(d) { node_onMouseOut(d, "CONTRIBUTION"); });
@@ -36,27 +32,26 @@ function updateLinks(links) {
     enter.append("path")
         .attr("class", "link")
         .attr("id", function(d) { return "l_" + d.Key; })
-        .attr("d", function(d,i) {
+        .attr("d", function(d, i) {
               d.links = createLinks(d);
               var diag = diagonal(d.links[0], i);
               diag += "L" + String(diagonal(d.links[1], i)).substr(1);
-              diag += "A" + (linkRadius) + "," + (linkRadius) + " 0 0,0 " +  d.links[0].source.x + "," + d.links[0].source.y;
+              diag += "A" + (linkRadius) + "," + (linkRadius) + " 0 0, 0 " +  d.links[0].source.x + "," + d.links[0].source.y;
 
               return diag;
         })
         .style("stroke",function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
         .style("stroke-opacity", 0.05)
-        //.style("stroke-width", function (d) { return d.links[0].strokeWeight;})
         .style("fill-opacity", 0.1)
         .style("fill",function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
-        .on("mouseover", function (d) { node_onMouseOver(d,"CONTRIBUTION");})
-        .on("mouseout", function (d) {node_onMouseOut(d,"CONTRIBUTION"); });
+        .on("mouseover", function (d) { node_onMouseOver(d, "CONTRIBUTION");})
+        .on("mouseout", function (d) {node_onMouseOut(d, "CONTRIBUTION"); });
 
     /* NODES */
     enter.append("g")
         .attr("class","node")
         .append("circle")
-        .style("fill",function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
+        .style("fill", function(d) { return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor; })
         .style("fill-opacity", 0.5)
         .style("stroke-opacity", 1)
         .attr("r", function(d) {
@@ -66,7 +61,7 @@ function updateLinks(links) {
             var ratio = ((relatedNode.Amount - relatedNode.currentAmount) / relatedNode.Amount);
             return relatedNode.r * ratio;
         })
-        .attr("transform", function (d,i) {
+        .attr("transform", function (d) {
             return "translate(" + (d.links[0].target.x) + "," + (d.links[0].target.y) + ")";
         })
 
@@ -106,7 +101,7 @@ function updateLinks(links) {
 
 function updateNodes() {
     var node = nodesSvg.selectAll("g.node")
-        .data(cands, function (d) {
+        .data(serverNodes, function (d) {
             return d.CAND_ID;
         });
 
@@ -118,13 +113,13 @@ function updateNodes() {
 
     enter.append("circle")
         .attr("r", function(d) { return d.r; })
-        .style("fill-opacity", function (d) { return (d.depth < 2) ? 0 : 0.05})
-        .style("stroke",function(d) {
+        .style("fill-opacity", 0.5)
+        .style("stroke", function(d) {
             return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor;
         })
-        .style("stroke-opacity", function (d) { return (d.depth < 2) ? 0 : 0.8})
+        .style("stroke-opacity", 0.8)
         .style("fill", function(d) {
-            return (d.Type == "flow") ? flowColor : (d.Type == "visit") ? visitColor : otherColor;
+            return (d.Type === "flow") ? flowColor : (d.Type === "visit") ? visitColor : otherColor;
         });
 
     var g = enter.append("g")
@@ -143,9 +138,9 @@ function updateNodes() {
         .style("fill-opacity", 0)
         .style("stroke", "#000")
         .style("stroke-width", 1.5)
-        .style("stroke-opacity",1)
-        .on("mouseover", function (d) { node_onMouseOver(d,"CAND"); })
-        .on("mouseout", function (d) { node_onMouseOut(d,"CAND"); })
+        .style("stroke-opacity", 1)
+        .on("mouseover", function (d) { node_onMouseOver(d, "CAND"); })
+        .on("mouseout", function (d) { node_onMouseOut(d, "CAND"); })
         .on("click", function(d) { serverClick(d); });
 
     node.exit().remove().transition(500).style("opacity",0);
@@ -169,8 +164,8 @@ function updateChords() {
                 + (d.angle > Math.PI ? "rotate(180)" : "");
         })
         .text(function(d) { return trimLabel(groupsById[optionType + "_" + d.label].GROUP_NAME); })
-        .on("mouseover", function (d) { node_onMouseOver(d, "PAC"); })
-        .on("mouseout", function (d) { node_onMouseOut(d, "PAC"); });
+        .on("mouseover", function (d) { node_onMouseOver(d, "GROUP"); })
+        .on("mouseout", function (d) { node_onMouseOut(d, "GROUP"); });
 
     arcGroup.transition()
         .select("text")
@@ -207,8 +202,7 @@ function updateChords() {
 function trimLabel(label) {
     if (label.length > 25) {
         return String(label).substr(0,25) + "...";
-    }
-    else {
+    } else {
         return label;
     }
 }

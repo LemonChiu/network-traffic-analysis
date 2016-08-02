@@ -39,12 +39,12 @@ function buildTreemap() {
             .enter().append("svg:g")
             .attr("class", "cell")
             .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-            .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); });
+            .on("click", function(d) { return zoom(node === d.parent ? root : d.parent); });
 
         cell.append("svg:rect")
             .attr("width", function(d) { return d.dx > 1 ? d.dx - 1 : 0; })
             .attr("height", function(d) { return d.dy > 1 ? d.dy - 1 : 0; })
-            .style("fill", function(d) { return color(d.parent.name); })
+            .style("fill", function(d) { return globalColor(d.parent.name); })
             .style("fill-opacity", function(d) { return contains(serversList, d.name) ? 1 : 0.2 })
             .on("mouseover", function (d) { node_onMouseOver(d, "RECT"); })
             .on("mouseout", function (d) { node_onMouseOut(d, "RECT"); });
@@ -69,7 +69,7 @@ function buildTreemap() {
         d3.select(window).on("click", function() { zoom(root); });
 
         d3.selectAll("input[type=\"radio\"]").on("change", function() {
-            treemap.value(this.value == "size" ? size : count).nodes(root);
+            treemap.value(this.value === "size" ? size : count).nodes(root);
             zoom(node);
         });
     });
@@ -95,7 +95,7 @@ function buildTreemap() {
 
         t.select("rect")
             .attr("width", function(d) { return kx * d.dx > 1 ? kx * d.dx - 1 : 0; })
-            .attr("height", function(d) { return ky * d.dy > 1? ky * d.dy - 1 : 0; })
+            .attr("height", function(d) { return ky * d.dy > 1 ? ky * d.dy - 1 : 0; })
             .style("fill-opacity", function(d) { return contains(serversList, d.name) ? 1 : 0.2 });
 
         t.select("text")

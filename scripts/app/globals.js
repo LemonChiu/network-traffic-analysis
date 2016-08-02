@@ -43,7 +43,7 @@ var arc = d3.svg.arc()
     .innerRadius(innerRadius)
     .outerRadius(innerRadius + 10);
 
-var color = d3.scale.category20c();
+var globalColor = d3.scale.category20c();
 
 var toolTip = d3.select("#tool-tip");
 var ipHeader = d3.select("#ip-header");
@@ -55,58 +55,43 @@ var otherColor = "#FFEDAB";
 
 var optionType = "visit";
 
-var linkGroup;
-
 var candidates = [],
-    contribution = [],
-
-    pacs = [],
     groupsVisit = [],
-    groupsFLow = [],
-    h_dems = [],
-    IPVisit = [],
-    h_others = [],
+    ipVisit = [],
     ipFlow = [],
-    s_reps = [],
-    s_others = [],
-    total_hDems = 0,
     totalIPVisitCount = 0,
     totalIPFlowSize = 0,
-    total_sReps = 0,
-    total_hOthers = 0,
-    total_sOthers = 0,
-
     flowContributions = [],
     countContributions = [],
-    totalContributions = 0,
+    contribution = [],
     groupsById = {},
     chordsById = {},
     nodesById = {},
-    chordCount = 20,
-
     nodes = [],
-    renderLinks = [];
+    renderLinks = [],
+    serverNodes = [],
+    groups = [],
+    linkGroup;
 
 var formatNumber = d3.format(",.0f"),
     formatAmount = function(d) {
-        if (optionType == "visit") {
+        if (optionType === "visit") {
             return formatNumber(d) + " visits";
-        } else if (optionType == "flow") {
+        } else if (optionType === "flow") {
             return formatNumber(d) + " bytes";
         }
     };
 
 var formatServerTotal = function(d) {
-    if (d == "visit") {
-        return "Total Visited: "
-    }else if (d == "flow") {
-        return "Total Downloaded:"
+    if (d === "visit") {
+        return "Total Visits: "
+    } else if (d === "flow") {
+        return "Total Flow: "
     }
 };
 
-var buf_indexByName={},
-    indexByName = {},
-    nameByIndex = {},
+var indexByName = [],
+    nameByIndex = [],
     labels = [],
     chords = [];
 
@@ -116,7 +101,7 @@ function log(message) {
     console.log(message);
 }
 
-//Judge if is in the array
+// Judge if is in the array
 function contains(array, obj) {
     var i = array.length;
     while (i--) {
@@ -127,17 +112,17 @@ function contains(array, obj) {
     return false;
 }
 
-//Get the index of the element in an array
+// Get the index of the element in an array
 Array.prototype.indexOf = function(val) {
     for (var i = 0; i < this.length; i++) {
-        if (this[i] == val) {
+        if (this[i] === val) {
             return i;
         }
     }
     return -1;
 };
 
-//Delete an element in an array
+// Delete an element in an array
 Array.prototype.remove = function(val) {
     var index = this.indexOf(val);
     if (index > -1) {
