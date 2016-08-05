@@ -14,7 +14,7 @@ function buildTimeline() {
 
     var margin = [20, 30, 20, 20],
         timelineWidth = 550,
-        timelineHeight = 220,
+        timelineHeight = 200,
         verticalSpace = 10;
 
     var x,

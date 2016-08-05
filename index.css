@@ -145,7 +145,7 @@ text.chord {
 #treemap-div {
     float: right;
     width: 600px;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 .bar-option {
@@ -158,7 +158,7 @@ text.chord {
     float: right;
     width: 600px;
     height: 275px;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 #next-graph-btn {

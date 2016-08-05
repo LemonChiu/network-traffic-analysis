@@ -3,7 +3,7 @@ function buildTreemap() {
     d3.selectAll(".bar-option").style("display", "inline");
 
     var treemapWidth = 510,
-        treemapHeight = 250;
+        treemapHeight = 230;
 
     var x = d3.scale.linear().range([0, treemapWidth]),
         y = d3.scale.linear().range([0, treemapHeight]),
